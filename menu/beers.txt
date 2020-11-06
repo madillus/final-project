@@ -1,0 +1,60 @@
+TAP BEER CRAFT BREWED ON THE PREMISES. Filterless. No Additives. No Preservatives
+BIER AUS UNSERER HAUSBRAUEREI FRISCH GEZAPFT. Filterlos. Ohne jegliche Zusätze
+All Brews brewed on the premises. Yes. All
+
+
+0,1L 0,25L 0,4L 1,5L
+const beers = 1516 Lager (A)
+Blond Lager / distinctively hopped
+Helles Vollbier / kräftig gehopft
+€ 2,10 € 2,90 € 3,70 € 12,40
+
+1516 Black & Tan | 1516 Schnitt (A)
+Mix of dark and blond beer
+Dunkles und helles Bier gemischt
+€ 2,10 € 2,90 € 3,70 € 12,40
+
+1516 Shandy | 1516 Radler (A)
+Lager & Lemonade | Helles & Limo
+€ 2,10 € 3,40 € 4,20 € 12,90
+
+Victory Hop Devil IPA (A)
+(from PA to Vienna) Whole Leaf hopped
+Doldenhopfen gehopft
+€ 2,10 € 3,70 € 4,80 € 15,90
+
+1516 Weisse (A)
+Cascade hopped Wheat Ale
+Weissbier mit Cascade Hopfen gehopft
+€ 2,10 € 2,90 € 3,60 € 12,40
+
+0,1L 0,25L 0,4L 1,5L
+Accadacca Pils (A)
+Pils hopped with 100% hops from OZ.
+Galaxy, Enigma & Vic Secret
+€ 2,10 € 3,40 € 4,20 € 12,90
+
+Kimber Ale (A)
+Amber Ale fermented with Alt yeast from Düsseldorf,
+hopped with Spalter Spalt & Spalter Select
+€ 2,10 € 2,90 € 3,70 € 12,40
+
+15 Sistine Chapel Spiced Triple (A)
+Triple spiced wit Lime, Sichuan Pepper, Bitter Orange &
+Coriander
+€ 2,10 € 3,70 € 4,80 € 15,90
+
+Tonka Bean Vanilla Spiced Milk Stout (A,G)
+Well. Milk Stout spiced with Tonka Beans & Vanilla € 2,10 € 3,70 € 4,80 € 15,90
+
+Slipper Pale Ale (A)
+Slipper session ale will transport you on the hoppy side
+of the tracks. You will love the packed punch by Citra
+hops hunted down with passion fruit aromas by Galaxy
+hops and the lemon spikes by Sorachi Ace. The malt
+back bone is Vienna Malt and 2-row – to keep us
+focused on the green cones.
+Such is the law, no crying or whatever else helps or will
+change this issue. No drinks outside allowed by law after
+garden closing hours!!!!
+€ 2,10 € 2,90 € 3,60 € 12,40
