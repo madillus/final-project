@@ -50,6 +50,8 @@ export async function updateBeerById(id, beer) {
 
 
 
+
+
 // sql.end();
 
 export async function getSessionByToken(token) {

@@ -90,6 +90,7 @@ export default function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const router = useRouter();
 
 return (
   <Layout loggedIn={props.loggedIn}>

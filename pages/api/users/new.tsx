@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function Register(props){
+export default function Register(props: { token: string }){
   const[username, setUsername]=useState('')
   const[password, setPassword]=useState('')
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
   return(<>
-  <h1>!REGISTER!</h1>
+  <h1>REGISTER!</h1>
 
   <form onSubmit ={async (e)=>{
     e.preventDefault();

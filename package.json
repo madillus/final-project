@@ -11,6 +11,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@types/pg": "^7.14.6",
+    "@types/styled-components": "^5.1.4",
     "apollo-server-micro": "^2.19.0",
     "argon2": "^0.27.0",
     "axios": "^0.21.0",
@@ -26,10 +28,11 @@
     "next": "10.0.1",
     "next-cookies": "^2.0.3",
     "next-images": "^1.6.0",
+    "pg": "^8.4.2",
     "postgres": "^1.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.3",
