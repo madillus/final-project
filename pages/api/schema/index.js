@@ -2,133 +2,133 @@ import  {  gql  }  from  "apollo-server-micro";
 
 export  const  typeDefs  =  gql`
     type  User {
-        id: ID!
+        id: Int!
         userName: String!
         userRoleId: String!
     }
     type  Beers {
-      id: ID!
+      id: Int!
       name: String!
       Description: String
       slug: String
   }
     type  BeerMenu {
-      id: ID!
+      id: Int!
       name: String!
       germanName: String
       description: String
       germanDescription: String
       allergens: String
-      priceTaster: String
-      priceSmall: String
-      priceNormal: String
-      pricePitcher: String
+      priceTaster: Int
+      priceSmall: Int
+      priceNormal: Int
+      pricePitcher: Int
     }
 
     type  Wines {
-      id: ID!
+      id: Int!
       name: String!
       Description: String
-      Price: String!
+      Price: Int!
   }
     type  Seasonal {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
 
   }
     type  Soups {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
     type  Sausages {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Sandwiches {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Salads {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Classics {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Bbq {
-       id: ID!
+       id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Sides {
-       id: ID!
+       id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Desserts {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
 
     type  Mittags {
-      id: ID!
+      id: Int!
       Name: String!
       GermanName: String
       Description: String
       GermanDescription: String
       Allergens: String
-      Price: String!
+      Price: Int!
     }
 
     type  Query {

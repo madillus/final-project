@@ -2,6 +2,64 @@ import { useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+
+const Letter = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+width: auto;
+margin-left: auto;
+margin-right: auto;
+padding: .5rem;
+border: .5rem;
+border-radius: 1rem;
+`
+const Heading = styled.h2`
+font-size: 3rem;
+text-align: center;
+`
+const Inner = styled.div`
+display: flex;
+width: 50%;
+justify-content: center;
+margin-top: .5rem;
+flex-direction: column;
+`
+
+const Text = styled.p`
+margin-top: .5rem;
+font-weight: 300;
+text-align: center;
+`
+
+const InputBox = styled.input`
+border: 1px solid #000;
+text-decoration: none;
+border-radius: 10px;
+padding: 10px;
+margin: 5px;
+width: 15rem;
+box-sizing: border-box;
+margin-bottom: .5rem;
+&:focus {
+    outline: none;
+    box-shadow: 0px 0px 2px black;}
+`
+
+const StyledButton = styled.button`
+text-align: center;
+background: #c00c1a;
+color: #fff;
+padding: 10px;
+margin: 5px;
+margin-bottom: 4rem;
+width: 15rem;
+border: none;
+border-radius: 10px;
+box-sizing: border-box;
+`
+
+
 const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [state, setState] = useState('IDLE');
@@ -20,67 +78,11 @@ const Newsletter = () => {
   };
 
 
-
-  const Newsletter = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: .5rem;
-    border: .5rem;
-    border-radius: 1rem;
-  `
-  const Heading = styled.h2`
-  font-size: 3rem;
-  text-align: center;
-  `
-  const Inner = styled.div`
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  margin-top: .5rem;
-  flex-direction: column;
-  `
-
-  const Text = styled.p`
-  margin-top: .5rem;
-  font-weight: 300;
-  text-align: center;
-  `
-
-  const InputBox = styled.input`
-  border: 1px solid #000;
-  text-decoration: none;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 5px;
-  width: 15rem;
-  box-sizing: border-box;
-  margin-bottom: .5rem;
-  &:focus {
-        outline: none;
-        box-shadow: 0px 0px 2px black;}
-  `
-
-  const StyledButton = styled.button`
-  text-align: center;
-  background: #c00c1a;
-  color: #fff;
-  padding: 10px;
-  margin: 5px;
-  width: 15rem;
-  border: none;
-  border-radius: 10px;
-  box-sizing: border-box;
-  `
-
 return (
 
-  <Newsletter>
+  <Letter>
 
-    <Heading>Sign up to our newsletter</Heading>
+    <Heading>Sign up to our Newsletter</Heading>
     <Text> Keep up to date with our latest mittags menu, beers and seasonal specials.</Text>
     <Inner>
     <InputBox
@@ -101,12 +103,12 @@ return (
     >Subscribe</StyledButton>
  </Inner>
       {state === "ERROR" && (
-        <p className="w-1/2 mt-2 text-red-600">{errorMessage}</p>
+        <p>{errorMessage}</p>
       )}
       {state === "SUCCESS" && (
-        <p className="w-1/2 mt-2 text-green-600">Success!</p>
+        <p>Success!</p>
       )}
-    </Newsletter>
+    </Letter>
 
 
 

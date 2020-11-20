@@ -28,3 +28,22 @@ const classics = [
   price: '11.60 '}
 
 ]
+
+exports.up = async  (sql) => {
+  await sql`
+  INSERT INTO classics ${sql(classics,
+		'name',
+		'german_name',
+		'description',
+		'german_description',
+		'allergens',
+		'price'
+    )}
+  `;
+};
+
+exports.down = async (sql) => {
+    await sql`
+      DELETE FROM classics;
+		`;
+	};

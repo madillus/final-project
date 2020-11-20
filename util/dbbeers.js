@@ -45,6 +45,20 @@ export async function updateBeerById(id, beer) {
   return camelcaseBeers[0];
 }
 
+export async function deleteBeerById(id) {
+  // Return undefined if the id is not
+  // in the correct format
+  if (!/^\d+$/.test(id)) return undefined;
+
+  const beers = await sql(id)`
+    DELETE FROM beers
+      WHERE id = ${id}
+      RETURNING *;
+  `;
+
+  return beers.map((u) => camelcaseKeys(u))[0];
+}
+
 
 
 

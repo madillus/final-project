@@ -83,3 +83,22 @@ const sides = [
   allergens: '(O,F)',
   price: '2.90'},
 ]
+
+exports.up = async  (sql) => {
+  await sql`
+  INSERT INTO sides ${sql(sides,
+		'name',
+		'german_name',
+		'description',
+		'german_description',
+		'allergens',
+		'price'
+    )}
+  `;
+};
+
+exports.down = async (sql) => {
+    await sql`
+      DELETE FROM sides;
+		`;
+	};

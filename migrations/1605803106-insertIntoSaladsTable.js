@@ -23,3 +23,22 @@ const salads = [
 
 
 ]
+
+exports.up = async  (sql) => {
+  await sql`
+  INSERT INTO salads ${sql(salads,
+		'name',
+		'german_name',
+		'description',
+		'german_description',
+		'allergens',
+		'price'
+    )}
+  `;
+};
+
+exports.down = async (sql) => {
+    await sql`
+      DELETE FROM salads;
+		`;
+	};

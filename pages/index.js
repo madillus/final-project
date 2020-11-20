@@ -5,7 +5,7 @@ import singleBeer from '../images/singleBeer.png'
 import darkBeer from '../images/darkBeer.jpg'
 import singleGlass from '../images/singleGlass.png'
 import tableRibs from '../images/tableRibs.png'
-import Newsletter from '../components/newsletter'
+import Newsletter from '../components/Newsletter'
 
 
 const FirstSection = styled.div`

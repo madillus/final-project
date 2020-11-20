@@ -64,18 +64,25 @@ const StyledLogin = styled.div`
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     color: ghostwhite;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
-  button {
-    background: #c00c1a;
-    color: #fff;
-    padding: 10px;
-    margin: 5px;
-    width: 15rem;
-    border: none;
-    border-radius: 10px;
-    box-sizing: border-box;
-  }
+
 `;
+const StyledButton = styled.button`
+text-align: center;
+background: #c00c1a;
+color: #fff;
+padding: 10px;
+margin: 5px;
+margin-bottom: 4rem;
+width: 15rem;
+border: none;
+border-radius: 10px;
+box-sizing: border-box;
+`
 
 const StyledInput = styled.input`
   border: 1px solid #000;
@@ -84,6 +91,10 @@ const StyledInput = styled.input`
   margin: 5px;
   width: 15rem;
   box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export default function Login(props) {
@@ -125,14 +136,16 @@ onSubmit={async (e) => {
 >
 <StyledInput
   value={username}
+  placeholder='username'
   onChange={(e) => setUsername(e.currentTarget.value)}
 />
 <StyledInput
+  placeholder='password'
   value={password}
   type="password"
   onChange={(e) => setPassword(e.currentTarget.value)}
 />
-<button>Log in</button>
+<StyledButton>Log in</StyledButton>
 </form>
 
 <p style={{ color: 'red' }}>{errorMessage}</p>
