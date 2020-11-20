@@ -56,7 +56,7 @@ const snacks = [
   allergens: '(A,N,L)',
   price: '10.20'},
 
-  {name: 'Habanero Suicide Hot Wings - please pay beforehand ☺ (For survivors: tap water for free, glass of milk not included)',
+  {name: 'Habanero Suicide Hot Wings - please pay beforehand  (For survivors: tap water for free, glass of milk not included)',
   german_name: 'Hühnerflügel in hausgemachter scharfer Habanerosauce mit Blue Cheese Dip',
   description: 'Chicken wings coated in homemade Habanero hot sauce served with blue cheese dip',
   german_description:'',
