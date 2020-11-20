@@ -2,9 +2,24 @@ import postgres from 'postgres';
 import dotenv from 'dotenv';
 import camelcaseKeys from 'camelcase-keys';
 
+import extractHerokuDatabaseEnvVars from './extractHerokuDatabaseEnvVars';
+
+extractHerokuDatabaseEnvVars();
+
 dotenv.config();
 
-const sql = postgres();
+const sql =
+  process.env.NODE_ENV === 'production'
+    ? // "Unless you're using a Private or Shield Heroku Postgres database, Heroku Postgres does not currently support verifiable certificates"
+      // https://help.heroku.com/3DELT3RK/why-can-t-my-third-party-utility-connect-to-heroku-postgres-with-ssl
+      postgres({ ssl: { rejectUnauthorized: false } })
+    : postgres({
+        // Avoid the error below of using too many connection slots with
+        // Next.js hot reloading:
+        // Error: remaining connection slots are reserved for non-replication superuser connectionsError: remaining connection slots are reserved for non-replication superuser connections
+        idle_timeout: 5,
+      });
+
 
 export async function getBbq() {
 const bbq = await sql`
