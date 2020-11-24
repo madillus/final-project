@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import Image from 'next/image'
 import Layout from '../components/Layout';
-import landingImage from '../images/landingImage.jpg'
-import singleBeer from '../images/singleBeer.png'
-import darkBeer from '../images/darkBeer.jpg'
-import singleGlass from '../images/singleGlass.png'
-import tableRibs from '../images/tableRibs.png'
-import Newsletter from '../components/Newsletter'
+import landingImage from '../images/landingImage.jpg';
+import singleBeer from '../images/singleBeer.png';
+import darkBeer from '../images/darkBeer.jpg';
+import singleGlass from '../images/singleGlass.png';
+import tableRibs from '../images/tableRibs.png';
+import Newsletter from '../components/Newsletter';
+import Link from 'next/link';
 
 
 const FirstSection = styled.div`
@@ -48,7 +50,7 @@ z-index: 8;
 @media (max-width: 768px) {
   width: 70%;
   margin-left: auto;
-  margin-top: 6rem;
+  margin-top: 12rem;
   margin-right: 15%;
   align-items: center;
   opacity: 80%;
@@ -81,8 +83,8 @@ padding: 1rem;
 border-radius: 5px;
 margin-left:auto;
 margin-right: auto;
-margin-top: 3rem;
-margin-bottom: 3rem;
+margin-top: 2rem;
+margin-bottom: 2rem;
 border: none;
 transition: all 0.4s ease 0s;
 &:hover {
@@ -131,9 +133,37 @@ const ThirdSection = styled.div`
 height: auto;
 width: auto;
 display: flex;
-justify-content: flex-end;
+justify-content: center;
 width: auto;
 `;
+
+const NewsletterCard = styled.div`
+position: absolute;
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: .5rem .5rem;
+opacity: 90%;
+margin-top: 6rem;
+margin-right: 3rem;
+right: 0px;
+width: 30%;
+height: auto;
+background-color: #2e2d26;
+margin-bottom: 10rem;
+z-index: 8;
+@media (max-width: 768px) {
+  width: 70%;
+  margin-left: auto;
+  margin-top: 6rem;
+  margin-right: 15%;
+  align-items: center;
+  opacity: 80%;
+  font-size: 1rem;
+
+}
+`;
+
 
 const ThirdSectionText = styled.div`
 position: absolute;
@@ -160,6 +190,25 @@ z-index: 8;
 }
 `;
 
+const OuterNewsletter = styled.div`
+padding: 2rem;
+margin-top: 12rem;
+margin-bottom: auto;
+
+border-radius: .5rem .5rem;
+position: absolute;
+background-color: white;
+color: ghostwhite;
+fill: white;
+max-height: 80%;
+max-width: 80%;
+width: 80%;
+height: 40rem;
+display: flex;
+justify-content: center;
+
+`;
+
 
 
 function App() {
@@ -170,26 +219,27 @@ function App() {
       <FirstSectionText>
       <CardText>1516 BREWING COMPANY</CardText>
         <CardText>REAL BEER STRAIGHT FROM THE HEART OF VIENNA<br></br>OTHER TEXT</CardText>
+        <Link href="/menu">
         <MenuButton>MENU</MenuButton>
+        </Link>
         <MenuButton>MITTAGS</MenuButton>
+        <Link href='/beers' >
         <MenuButton>BEERS</MenuButton>
+        </Link>
         </FirstSectionText>
-      <FirstSectionImage src={landingImage} alt='logo' id='landingImage' />
+      <FirstSectionImage src='/landingImage.jpg' alt='logo' id='landingImage'  />
       <FirstSectionMobileImage src={singleBeer} alt='logo' id='singleBeer' />
-
     </FirstSection>
-    <SecondSection>
-      <SecondSectionText>
-      <CardText>"24 hours in a day. 24 beers in a case. Coincidence? I think not." ~ H.L. Mencken</CardText>
-
-      </SecondSectionText>
-
-      <FirstSectionImage src={darkBeer} alt='beer' id='darkBeer' />
-      <FirstSectionMobileImage src={singleGlass} alt='logo' id='singleGlass' />
-    </SecondSection>
     <ThirdSection>
+    <FirstSectionImage src={tableRibs} alt='ribs' id='tableRibs' />
+      <OuterNewsletter>
+
+      <NewsletterCard>
       <Newsletter />
-    {/* <FirstSectionImage src={tableRibs} alt='ribs' id='tableRibs' /> */}
+      </NewsletterCard>
+
+      </OuterNewsletter>
+
     </ThirdSection>
     </Layout>
     </div>
@@ -197,3 +247,15 @@ function App() {
 }
 
 export default App;
+
+
+{/* <FirstSectionImage src={tableRibs} alt='ribs' id='tableRibs' /> */}
+{/* <SecondSection>
+      <SecondSectionText>
+      <CardText>"24 hours in a day. 24 beers in a case. Coincidence? I think not." ~ H.L. Mencken</CardText>
+
+      </SecondSectionText>
+
+      <FirstSectionImage src={darkBeer} alt='beer' id='darkBeer' />
+      <FirstSectionMobileImage src={singleGlass} alt='logo' id='singleGlass' />
+    </SecondSection> */}

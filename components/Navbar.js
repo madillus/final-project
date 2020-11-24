@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Menu from './Menu';
 import headerImage from '../images/headerImage.png'
+import Link from 'next/link';
 
 const Nav = styled.nav`
 width: 100%;
@@ -27,8 +28,9 @@ padding: 0;
 const Navbar = () => {
 return (
   <Nav>
+    <Link href='/'>
     <Img src={headerImage} alt='logo' id='headerImage' />
-
+    </Link>
 
 
     <Menu />

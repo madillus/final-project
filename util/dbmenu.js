@@ -107,3 +107,786 @@ export async function insertBbq(bbq) {
 
   return bbqs.map((u) => camelcaseKeys(u))[0];
 }
+
+export async function getSeasonal() {
+  const seasonal = await sql`
+  SELECT * FROM seasonal;
+  `;
+  return seasonal.map((seasonal) => {
+      return {
+        id: seasonal.id,
+        name: seasonal.name,
+        german_name: seasonal.german_name,
+        description: seasonal.description,
+        german_description: seasonal.german_description,
+        allergens: seasonal.allergens,
+        price: seasonal.price
+      };
+    });
+  }
+
+  export async function getSeasonalById(id) {
+    if (!/^\d+$/.test(id)) return undefined;
+
+    const seasonal = await sql`
+      SELECT * FROM seasonal WHERE id = ${id};
+    `;
+
+    const camelcaseseasonal = seasonal.map(camelcaseKeys);
+    return camelcaseseasonal[0];
+  }
+
+  export async function updateSeasonalById(id, seasonal) {
+    if (!/^\d+$/.test(id)) return undefined;
+
+    const seasonals = await sql`
+      UPDATE seasonal
+        SET name = ${seasonal.name}
+        WHERE id = ${id}
+        RETURNING *;
+    `;
+
+    const camelcaseseasonal = seasonals.map(camelcaseKeys);
+    return camelcaseseasonal[0];
+  }
+  export async function deleteseasonalById(id) {
+    // Return undefined if the id is not
+    // in the correct format
+    if (!/^\d+$/.test(id)) return undefined;
+
+    const seasonal = await sql(id)`
+      DELETE FROM seasonal
+        WHERE id = ${id}
+        RETURNING *;
+    `;
+
+    return seasonal.map((u) => camelcaseKeys(u))[0];
+  }
+
+  export async function insertSeasonal(seasonal) {
+    const requiredProperties = ['name', 'description', 'price'];
+    const seasonalProperties = Object.keys(seasonal);
+
+    if (seasonalProperties.length !== requiredProperties.length) {
+      return undefined;
+    }
+
+    const difference = seasonalProperties.filter(
+      (prop) => !requiredProperties.includes(prop),
+    );
+
+    if (difference.length > 0) {
+      return undefined;
+    }
+
+    const seasonals = await sql(seasonal)`
+      INSERT INTO seasonal
+        ('name',
+        'german_name',
+        'description',
+        'german_description',
+        'allergens',
+        'price')
+      VALUES
+        (${seasonal.name}, ${seasonal.germanName}, ${seasonal.description}, ${seasonal.germanDescription}, ${seasonal.allergens}, ${seasonal.price})
+      RETURNING *;
+    `;
+
+    return seasonals.map((u) => camelcaseKeys(u))[0];
+  }
+
+  export async function getClassics() {
+    const classics = await sql`
+    SELECT * FROM classics;
+    `;
+    return classics.map((classics) => {
+        return {
+          id: classics.id,
+          name: classics.name,
+          german_name: classics.german_name,
+          description: classics.description,
+          german_description: classics.german_description,
+          allergens: classics.allergens,
+          price: classics.price
+        };
+      });
+    }
+
+    export async function getClassicsById(id) {
+      if (!/^\d+$/.test(id)) return undefined;
+
+      const classics = await sql`
+        SELECT * FROM classics WHERE id = ${id};
+      `;
+
+      const camelcaseclassics = classics.map(camelcaseKeys);
+      return camelcaseclassics[0];
+    }
+
+    export async function updateClassicsById(id, classics) {
+      if (!/^\d+$/.test(id)) return undefined;
+
+      const classic = await sql`
+        UPDATE classics
+          SET name = ${classics.name}
+          WHERE id = ${id}
+          RETURNING *;
+      `;
+
+      const camelcaseclassics = classic.map(camelcaseKeys);
+      return camelcaseclassics[0];
+    }
+    export async function deleteClassicsById(id) {
+      // Return undefined if the id is not
+      // in the correct format
+      if (!/^\d+$/.test(id)) return undefined;
+
+      const classics = await sql(id)`
+        DELETE FROM classics
+          WHERE id = ${id}
+          RETURNING *;
+      `;
+
+      return classics.map((u) => camelcaseKeys(u))[0];
+    }
+
+    export async function insertClassics(classics) {
+      const requiredProperties = ['name', 'description', 'price'];
+      const classicsProperties = Object.keys(classics);
+
+      if (classicsProperties.length !== requiredProperties.length) {
+        return undefined;
+      }
+
+      const difference = classicsProperties.filter(
+        (prop) => !requiredProperties.includes(prop),
+      );
+
+      if (difference.length > 0) {
+        return undefined;
+      }
+
+      const classic = await sql(classics)`
+        INSERT INTO classics
+          ('name',
+          'german_name',
+          'description',
+          'german_description',
+          'allergens',
+          'price')
+        VALUES
+          (${classics.name}, ${classics.germanName}, ${classics.description}, ${classics.germanDescription}, ${classics.allergens}, ${classics.price})
+        RETURNING *;
+      `;
+
+      return classic.map((u) => camelcaseKeys(u))[0];
+    }
+
+    export async function getSandwiches() {
+      const sandwiches = await sql`
+      SELECT * FROM sandwiches;
+      `;
+      return sandwiches.map((sandwiches) => {
+          return {
+            id: sandwiches.id,
+            name: sandwiches.name,
+            german_name: sandwiches.german_name,
+            description: sandwiches.description,
+            german_description: sandwiches.german_description,
+            allergens: sandwiches.allergens,
+            price: sandwiches.price
+          };
+        });
+      }
+
+      export async function getSandwichesById(id) {
+        if (!/^\d+$/.test(id)) return undefined;
+
+        const sandwiches = await sql`
+          SELECT * FROM sandwiches WHERE id = ${id};
+        `;
+
+        const camelcasesandwiches = sandwiches.map(camelcaseKeys);
+        return camelcasesandwiches[0];
+      }
+
+      export async function updateSandwichesById(id, sandwiches) {
+        if (!/^\d+$/.test(id)) return undefined;
+
+        const sandwich = await sql`
+          UPDATE sandwiches
+            SET name = ${sandwiches.name}
+            WHERE id = ${id}
+            RETURNING *;
+        `;
+
+        const camelcasesandwiches = sandwich.map(camelcaseKeys);
+        return camelcasesandwiches[0];
+      }
+      export async function deleteSandwichesById(id) {
+        // Return undefined if the id is not
+        // in the correct format
+        if (!/^\d+$/.test(id)) return undefined;
+
+        const sandwiches = await sql(id)`
+          DELETE FROM sandwiches
+            WHERE id = ${id}
+            RETURNING *;
+        `;
+
+        return sandwiches.map((u) => camelcaseKeys(u))[0];
+      }
+
+      export async function insertSandwiches(sandwiches) {
+        const requiredProperties = ['name', 'description', 'price'];
+        const sandwichesProperties = Object.keys(sandwiches);
+
+        if (sandwichesProperties.length !== requiredProperties.length) {
+          return undefined;
+        }
+
+        const difference = sandwichesProperties.filter(
+          (prop) => !requiredProperties.includes(prop),
+        );
+
+        if (difference.length > 0) {
+          return undefined;
+        }
+
+        const sandwich = await sql(sandwiches)`
+          INSERT INTO sandwiches
+            ('name',
+            'german_name',
+            'description',
+            'german_description',
+            'allergens',
+            'price')
+          VALUES
+            (${sandwiches.name}, ${sandwiches.germanName}, ${sandwiches.description}, ${sandwiches.germanDescription}, ${sandwiches.allergens}, ${sandwiches.price})
+          RETURNING *;
+        `;
+
+        return sandwich.map((u) => camelcaseKeys(u))[0];
+      }
+
+      export async function getSalads() {
+        const salads = await sql`
+        SELECT * FROM salads;
+        `;
+        return salads.map((salads) => {
+            return {
+              id: salads.id,
+              name: salads.name,
+              german_name: salads.german_name,
+              description: salads.description,
+              german_description: salads.german_description,
+              allergens: salads.allergens,
+              price: salads.price
+            };
+          });
+        }
+
+        export async function getSaladsById(id) {
+          if (!/^\d+$/.test(id)) return undefined;
+
+          const salads = await sql`
+            SELECT * FROM salads WHERE id = ${id};
+          `;
+
+          const camelcasesalads = salads.map(camelcaseKeys);
+          return camelcasesalads[0];
+        }
+
+        export async function updateSaladsById(id, salads) {
+          if (!/^\d+$/.test(id)) return undefined;
+
+          const salad = await sql`
+            UPDATE salads
+              SET name = ${salads.name}
+              WHERE id = ${id}
+              RETURNING *;
+          `;
+
+          const camelcasesalads = salad.map(camelcaseKeys);
+          return camelcasesalads[0];
+        }
+        export async function deleteSaladsById(id) {
+          // Return undefined if the id is not
+          // in the correct format
+          if (!/^\d+$/.test(id)) return undefined;
+
+          const salads = await sql(id)`
+            DELETE FROM salads
+              WHERE id = ${id}
+              RETURNING *;
+          `;
+
+          return salads.map((u) => camelcaseKeys(u))[0];
+        }
+
+        export async function insertSalads(salads) {
+          const requiredProperties = ['name', 'description', 'price'];
+          const saladsProperties = Object.keys(salads);
+
+          if (saladsProperties.length !== requiredProperties.length) {
+            return undefined;
+          }
+
+          const difference = saladsProperties.filter(
+            (prop) => !requiredProperties.includes(prop),
+          );
+
+          if (difference.length > 0) {
+            return undefined;
+          }
+
+          const salad = await sql(salads)`
+            INSERT INTO salads
+              ('name',
+              'german_name',
+              'description',
+              'german_description',
+              'allergens',
+              'price')
+            VALUES
+              (${salads.name}, ${salads.germanName}, ${salads.description}, ${salads.germanDescription}, ${salads.allergens}, ${salads.price})
+            RETURNING *;
+          `;
+
+          return salad.map((u) => camelcaseKeys(u))[0];
+        }
+
+        export async function getSausages() {
+          const sausages = await sql`
+          SELECT * FROM sausages;
+          `;
+          return sausages.map((sausages) => {
+              return {
+                id: sausages.id,
+                name: sausages.name,
+                german_name: sausages.german_name,
+                description: sausages.description,
+                german_description: sausages.german_description,
+                allergens: sausages.allergens,
+                price: sausages.price
+              };
+            });
+          }
+
+          export async function getSausagesById(id) {
+            if (!/^\d+$/.test(id)) return undefined;
+
+            const sausages = await sql`
+              SELECT * FROM sausages WHERE id = ${id};
+            `;
+
+            const camelcasesausages = sausages.map(camelcaseKeys);
+            return camelcasesausages[0];
+          }
+
+          export async function updateSausagesById(id, sausages) {
+            if (!/^\d+$/.test(id)) return undefined;
+
+            const sausage = await sql`
+              UPDATE sausages
+                SET name = ${sausages.name}
+                WHERE id = ${id}
+                RETURNING *;
+            `;
+
+            const camelcasesausages = sausage.map(camelcaseKeys);
+            return camelcasesausages[0];
+          }
+          export async function deleteSausagesById(id) {
+            // Return undefined if the id is not
+            // in the correct format
+            if (!/^\d+$/.test(id)) return undefined;
+
+            const sausages = await sql(id)`
+              DELETE FROM sausages
+                WHERE id = ${id}
+                RETURNING *;
+            `;
+
+            return sausages.map((u) => camelcaseKeys(u))[0];
+          }
+
+          export async function insertSausages(sausages) {
+            const requiredProperties = ['name', 'description', 'price'];
+            const sausagesProperties = Object.keys(sausages);
+
+            if (sausagesProperties.length !== requiredProperties.length) {
+              return undefined;
+            }
+
+            const difference = sausagesProperties.filter(
+              (prop) => !requiredProperties.includes(prop),
+            );
+
+            if (difference.length > 0) {
+              return undefined;
+            }
+
+            const sausage = await sql(sausages)`
+              INSERT INTO sausages
+                ('name',
+                'german_name',
+                'description',
+                'german_description',
+                'allergens',
+                'price')
+              VALUES
+                (${sausages.name}, ${sausages.germanName}, ${sausages.description}, ${sausages.germanDescription}, ${sausages.allergens}, ${sausages.price})
+              RETURNING *;
+            `;
+
+            return sausage.map((u) => camelcaseKeys(u))[0];
+          }
+
+          export async function getSoups() {
+            const soups = await sql`
+            SELECT * FROM soups;
+            `;
+            return soups.map((soups) => {
+                return {
+                  id: soups.id,
+                  name: soups.name,
+                  german_name: soups.german_name,
+                  description: soups.description,
+                  german_description: soups.german_description,
+                  allergens: soups.allergens,
+                  price: soups.price
+                };
+              });
+            }
+
+            export async function getSoupsById(id) {
+              if (!/^\d+$/.test(id)) return undefined;
+
+              const soups = await sql`
+                SELECT * FROM soups WHERE id = ${id};
+              `;
+
+              const camelcasesoups = soups.map(camelcaseKeys);
+              return camelcasesoups[0];
+            }
+
+            export async function updateSoupsById(id, soups) {
+              if (!/^\d+$/.test(id)) return undefined;
+
+              const soup = await sql`
+                UPDATE soups
+                  SET name = ${soups.name}
+                  WHERE id = ${id}
+                  RETURNING *;
+              `;
+
+              const camelcasesoups = soup.map(camelcaseKeys);
+              return camelcasesoups[0];
+            }
+            export async function deleteSoupsById(id) {
+              // Return undefined if the id is not
+              // in the correct format
+              if (!/^\d+$/.test(id)) return undefined;
+
+              const soups = await sql(id)`
+                DELETE FROM soups
+                  WHERE id = ${id}
+                  RETURNING *;
+              `;
+
+              return soups.map((u) => camelcaseKeys(u))[0];
+            }
+
+            export async function insertSoups(soups) {
+              const requiredProperties = ['name', 'description', 'price'];
+              const soupsProperties = Object.keys(soups);
+
+              if (soupsProperties.length !== requiredProperties.length) {
+                return undefined;
+              }
+
+              const difference = soupsProperties.filter(
+                (prop) => !requiredProperties.includes(prop),
+              );
+
+              if (difference.length > 0) {
+                return undefined;
+              }
+
+              const soup = await sql(soups)`
+                INSERT INTO soups
+                  ('name',
+                  'german_name',
+                  'description',
+                  'german_description',
+                  'allergens',
+                  'price')
+                VALUES
+                  (${soups.name}, ${soups.germanName}, ${soups.description}, ${soups.germanDescription}, ${soups.allergens}, ${soups.price})
+                RETURNING *;
+              `;
+
+              return soup.map((u) => camelcaseKeys(u))[0];
+            }
+
+            export async function getSnacks() {
+              const snacks = await sql`
+              SELECT * FROM snacks;
+              `;
+              return snacks.map((snacks) => {
+                  return {
+                    id: snacks.id,
+                    name: snacks.name,
+                    german_name: snacks.german_name,
+                    description: snacks.description,
+                    german_description: snacks.german_description,
+                    allergens: snacks.allergens,
+                    price: snacks.price
+                  };
+                });
+              }
+
+              export async function getSnacksById(id) {
+                if (!/^\d+$/.test(id)) return undefined;
+
+                const snacks = await sql`
+                  SELECT * FROM snacks WHERE id = ${id};
+                `;
+
+                const camelcasesnacks = snacks.map(camelcaseKeys);
+                return camelcasesnacks[0];
+              }
+
+              export async function updateSnacksById(id, snacks) {
+                if (!/^\d+$/.test(id)) return undefined;
+
+                const snack = await sql`
+                  UPDATE snacks
+                    SET name = ${snacks.name}
+                    WHERE id = ${id}
+                    RETURNING *;
+                `;
+
+                const camelcasesnacks = snack.map(camelcaseKeys);
+                return camelcasesnacks[0];
+              }
+              export async function deleteSnacksById(id) {
+                // Return undefined if the id is not
+                // in the correct format
+                if (!/^\d+$/.test(id)) return undefined;
+
+                const snacks = await sql(id)`
+                  DELETE FROM snacks
+                    WHERE id = ${id}
+                    RETURNING *;
+                `;
+
+                return snacks.map((u) => camelcaseKeys(u))[0];
+              }
+
+              export async function insertSnacks(snacks) {
+                const requiredProperties = ['name', 'description', 'price'];
+                const snacksProperties = Object.keys(snacks);
+
+                if (snacksProperties.length !== requiredProperties.length) {
+                  return undefined;
+                }
+
+                const difference = snacksProperties.filter(
+                  (prop) => !requiredProperties.includes(prop),
+                );
+
+                if (difference.length > 0) {
+                  return undefined;
+                }
+
+                const snack = await sql(snacks)`
+                  INSERT INTO snacks
+                    ('name',
+                    'german_name',
+                    'description',
+                    'german_description',
+                    'allergens',
+                    'price')
+                  VALUES
+                    (${snacks.name}, ${snacks.germanName}, ${snacks.description}, ${snacks.germanDescription}, ${snacks.allergens}, ${snacks.price})
+                  RETURNING *;
+                `;
+
+                return snack.map((u) => camelcaseKeys(u))[0];
+              }
+
+              export async function getSides() {
+                const sides = await sql`
+                SELECT * FROM sides;
+                `;
+                return sides.map((sides) => {
+                    return {
+                      id: sides.id,
+                      name: sides.name,
+                      german_name: sides.german_name,
+                      description: sides.description,
+                      german_description: sides.german_description,
+                      allergens: sides.allergens,
+                      price: sides.price
+                    };
+                  });
+                }
+
+                export async function getSidesById(id) {
+                  if (!/^\d+$/.test(id)) return undefined;
+
+                  const sides = await sql`
+                    SELECT * FROM sides WHERE id = ${id};
+                  `;
+
+                  const camelcasesides = sides.map(camelcaseKeys);
+                  return camelcasesides[0];
+                }
+
+                export async function updateSidesById(id, sides) {
+                  if (!/^\d+$/.test(id)) return undefined;
+
+                  const side = await sql`
+                    UPDATE sides
+                      SET name = ${sides.name}
+                      WHERE id = ${id}
+                      RETURNING *;
+                  `;
+
+                  const camelcasesides = side.map(camelcaseKeys);
+                  return camelcasesides[0];
+                }
+                export async function deleteSidesById(id) {
+                  // Return undefined if the id is not
+                  // in the correct format
+                  if (!/^\d+$/.test(id)) return undefined;
+
+                  const sides = await sql(id)`
+                    DELETE FROM sides
+                      WHERE id = ${id}
+                      RETURNING *;
+                  `;
+
+                  return sides.map((u) => camelcaseKeys(u))[0];
+                }
+
+                export async function insertSides(sides) {
+                  const requiredProperties = ['name', 'description', 'price'];
+                  const sidesProperties = Object.keys(sides);
+
+                  if (sidesProperties.length !== requiredProperties.length) {
+                    return undefined;
+                  }
+
+                  const difference = sidesProperties.filter(
+                    (prop) => !requiredProperties.includes(prop),
+                  );
+
+                  if (difference.length > 0) {
+                    return undefined;
+                  }
+
+                  const side = await sql(sides)`
+                    INSERT INTO sides
+                      ('name',
+                      'german_name',
+                      'description',
+                      'german_description',
+                      'allergens',
+                      'price')
+                    VALUES
+                      (${sides.name}, ${sides.germanName}, ${sides.description}, ${sides.germanDescription}, ${sides.allergens}, ${sides.price})
+                    RETURNING *;
+                  `;
+
+                  return side.map((u) => camelcaseKeys(u))[0];
+                }
+
+                export async function getDesserts() {
+                  const desserts = await sql`
+                  SELECT * FROM desserts;
+                  `;
+                  return desserts.map((desserts) => {
+                      return {
+                        id: desserts.id,
+                        name: desserts.name,
+                        german_name: desserts.german_name,
+                        description: desserts.description,
+                        german_description: desserts.german_description,
+                        allergens: desserts.allergens,
+                        price: desserts.price
+                      };
+                    });
+                  }
+
+                  export async function getDessertsById(id) {
+                    if (!/^\d+$/.test(id)) return undefined;
+
+                    const desserts = await sql`
+                      SELECT * FROM desserts WHERE id = ${id};
+                    `;
+
+                    const camelcasedesserts = desserts.map(camelcaseKeys);
+                    return camelcasedesserts[0];
+                  }
+
+                  export async function updateDessertsById(id, desserts) {
+                    if (!/^\d+$/.test(id)) return undefined;
+
+                    const dessert = await sql`
+                      UPDATE desserts
+                        SET name = ${desserts.name}
+                        WHERE id = ${id}
+                        RETURNING *;
+                    `;
+
+                    const camelcasedesserts = dessert.map(camelcaseKeys);
+                    return camelcasedesserts[0];
+                  }
+                  export async function deleteDessertsById(id) {
+                    // Return undefined if the id is not
+                    // in the correct format
+                    if (!/^\d+$/.test(id)) return undefined;
+
+                    const desserts = await sql(id)`
+                      DELETE FROM desserts
+                        WHERE id = ${id}
+                        RETURNING *;
+                    `;
+
+                    return desserts.map((u) => camelcaseKeys(u))[0];
+                  }
+
+                  export async function insertDesserts(desserts) {
+                    const requiredProperties = ['name', 'description', 'price'];
+                    const dessertsProperties = Object.keys(desserts);
+
+                    if (dessertsProperties.length !== requiredProperties.length) {
+                      return undefined;
+                    }
+
+                    const difference = dessertsProperties.filter(
+                      (prop) => !requiredProperties.includes(prop),
+                    );
+
+                    if (difference.length > 0) {
+                      return undefined;
+                    }
+
+                    const dessert = await sql(desserts)`
+                      INSERT INTO desserts
+                        ('name',
+                        'german_name',
+                        'description',
+                        'german_description',
+                        'allergens',
+                        'price')
+                      VALUES
+                        (${desserts.name}, ${desserts.germanName}, ${desserts.description}, ${desserts.germanDescription}, ${desserts.allergens}, ${desserts.price})
+                      RETURNING *;
+                    `;
+
+                    return dessert.map((u) => camelcaseKeys(u))[0];
+                  }

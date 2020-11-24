@@ -8,7 +8,7 @@ const FooterBottom = styled.footer`
   background: #2e2d26;
   height: 6rem;
   padding: 20;
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -42,7 +42,7 @@ const Copyright = styled.p`
 
 export default function Footer() {
   return (
-    <footer>
+
       <FooterBottom>
         <IconBox>
           <Link href="https://www.facebook.com">
@@ -56,7 +56,7 @@ export default function Footer() {
 
         <Copyright> ©Copyright 2020 All rights reserved. 1516 Brewing Company®</Copyright>
       </FooterBottom>
-    </footer>
+
   );
 }
 
