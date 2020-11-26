@@ -167,12 +167,12 @@ onSubmit={async (e) => {
 export async function getServerSideProps(context) {
   const { session: token } = nextCookies(context);
 
-  const redirectDestination = context?.query?.returnTo ?? '/';
+  const redirectDestination = context?.query?.returnTo ?? '/admin/bbqadmin';
 
   if (await isSessionTokenValid(token)) {
     return {
       redirect: {
-        destination: redirectDestination,
+        destination: '/admin/bbqadmin',
         permanent: false,
       },
     };

@@ -28,7 +28,7 @@
     "*.config.js",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js", "db-connect.mjs", "pages/admin/beermenuadmin.txt", "pages/admin/beersadmin.txt", "pages/admin/mittagsadmin.txt", "pages/admin/seasonaladmin.txt", "pages/admin/winesadmin.txt"
+    "**/*.js", "db-connect.mjs", "pages/admin/beermenuadmin.ts", "pages/admin/soupsadmin.tsx", "pages/admin/mittagsadmin.txt", "pages/admin/seasonaladmin.tsx", "pages/admin/sandwichesadmin.tsx"
   ],
   "exclude": [
     "node_modules"

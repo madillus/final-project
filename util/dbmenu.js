@@ -25,18 +25,19 @@ export async function getBbq() {
 const bbq = await sql`
 SELECT * FROM bbq;
 `;
-return bbq.map((bbq) => {
-    return {
-      id: bbq.id,
-      name: bbq.name,
-      german_name: bbq.german_name,
-      description: bbq.description,
-      german_description: bbq.german_description,
-      allergens: bbq.allergens,
-      price: bbq.price
-    };
-  });
+return bbq.map(camelcaseKeys);
 }
+    // return {
+    //   id: bbq.id,
+    //   name: bbq.name,
+    //   german_name: bbq.german_name,
+    //   description: bbq.description,
+    //   german_description: bbq.german_description,
+    //   allergens: bbq.allergens,
+    //   price: bbq.price
+    // };
+  // });
+
 
 export async function getBbqById(id) {
   if (!/^\d+$/.test(id)) return undefined;
@@ -112,19 +113,8 @@ export async function getSeasonal() {
   const seasonal = await sql`
   SELECT * FROM seasonal;
   `;
-  return seasonal.map((seasonal) => {
-      return {
-        id: seasonal.id,
-        name: seasonal.name,
-        german_name: seasonal.german_name,
-        description: seasonal.description,
-        german_description: seasonal.german_description,
-        allergens: seasonal.allergens,
-        price: seasonal.price
-      };
-    });
-  }
-
+  return seasonal.map(camelcaseKeys);
+}
   export async function getSeasonalById(id) {
     if (!/^\d+$/.test(id)) return undefined;
 
@@ -146,8 +136,7 @@ export async function getSeasonal() {
         RETURNING *;
     `;
 
-    const camelcaseseasonal = seasonals.map(camelcaseKeys);
-    return camelcaseseasonal[0];
+    return seasonal.map((u) => camelcaseKeys(u))[0];
   }
   export async function deleteseasonalById(id) {
     // Return undefined if the id is not
@@ -199,19 +188,8 @@ export async function getSeasonal() {
     const classics = await sql`
     SELECT * FROM classics;
     `;
-    return classics.map((classics) => {
-        return {
-          id: classics.id,
-          name: classics.name,
-          german_name: classics.german_name,
-          description: classics.description,
-          german_description: classics.german_description,
-          allergens: classics.allergens,
-          price: classics.price
-        };
-      });
-    }
-
+    return classics.map(camelcaseKeys);
+  }
     export async function getClassicsById(id) {
       if (!/^\d+$/.test(id)) return undefined;
 
@@ -286,19 +264,8 @@ export async function getSeasonal() {
       const sandwiches = await sql`
       SELECT * FROM sandwiches;
       `;
-      return sandwiches.map((sandwiches) => {
-          return {
-            id: sandwiches.id,
-            name: sandwiches.name,
-            german_name: sandwiches.german_name,
-            description: sandwiches.description,
-            german_description: sandwiches.german_description,
-            allergens: sandwiches.allergens,
-            price: sandwiches.price
-          };
-        });
-      }
-
+      return sandwiches.map(camelcaseKeys);
+    }
       export async function getSandwichesById(id) {
         if (!/^\d+$/.test(id)) return undefined;
 
@@ -373,19 +340,8 @@ export async function getSeasonal() {
         const salads = await sql`
         SELECT * FROM salads;
         `;
-        return salads.map((salads) => {
-            return {
-              id: salads.id,
-              name: salads.name,
-              german_name: salads.german_name,
-              description: salads.description,
-              german_description: salads.german_description,
-              allergens: salads.allergens,
-              price: salads.price
-            };
-          });
-        }
-
+        return salads.map(camelcaseKeys);
+      }
         export async function getSaladsById(id) {
           if (!/^\d+$/.test(id)) return undefined;
 
@@ -460,19 +416,8 @@ export async function getSeasonal() {
           const sausages = await sql`
           SELECT * FROM sausages;
           `;
-          return sausages.map((sausages) => {
-              return {
-                id: sausages.id,
-                name: sausages.name,
-                german_name: sausages.german_name,
-                description: sausages.description,
-                german_description: sausages.german_description,
-                allergens: sausages.allergens,
-                price: sausages.price
-              };
-            });
-          }
-
+          return sausages.map(camelcaseKeys);
+        }
           export async function getSausagesById(id) {
             if (!/^\d+$/.test(id)) return undefined;
 
@@ -547,19 +492,8 @@ export async function getSeasonal() {
             const soups = await sql`
             SELECT * FROM soups;
             `;
-            return soups.map((soups) => {
-                return {
-                  id: soups.id,
-                  name: soups.name,
-                  german_name: soups.german_name,
-                  description: soups.description,
-                  german_description: soups.german_description,
-                  allergens: soups.allergens,
-                  price: soups.price
-                };
-              });
-            }
-
+            return soups.map(camelcaseKeys);
+          }
             export async function getSoupsById(id) {
               if (!/^\d+$/.test(id)) return undefined;
 
@@ -634,19 +568,8 @@ export async function getSeasonal() {
               const snacks = await sql`
               SELECT * FROM snacks;
               `;
-              return snacks.map((snacks) => {
-                  return {
-                    id: snacks.id,
-                    name: snacks.name,
-                    german_name: snacks.german_name,
-                    description: snacks.description,
-                    german_description: snacks.german_description,
-                    allergens: snacks.allergens,
-                    price: snacks.price
-                  };
-                });
-              }
-
+              return snacks.map(camelcaseKeys);
+            }
               export async function getSnacksById(id) {
                 if (!/^\d+$/.test(id)) return undefined;
 
@@ -721,19 +644,8 @@ export async function getSeasonal() {
                 const sides = await sql`
                 SELECT * FROM sides;
                 `;
-                return sides.map((sides) => {
-                    return {
-                      id: sides.id,
-                      name: sides.name,
-                      german_name: sides.german_name,
-                      description: sides.description,
-                      german_description: sides.german_description,
-                      allergens: sides.allergens,
-                      price: sides.price
-                    };
-                  });
-                }
-
+                return sides.map(camelcaseKeys);
+              }
                 export async function getSidesById(id) {
                   if (!/^\d+$/.test(id)) return undefined;
 
@@ -808,19 +720,8 @@ export async function getSeasonal() {
                   const desserts = await sql`
                   SELECT * FROM desserts;
                   `;
-                  return desserts.map((desserts) => {
-                      return {
-                        id: desserts.id,
-                        name: desserts.name,
-                        german_name: desserts.german_name,
-                        description: desserts.description,
-                        german_description: desserts.german_description,
-                        allergens: desserts.allergens,
-                        price: desserts.price
-                      };
-                    });
-                  }
-
+                  return desserts.map(camelcaseKeys);
+                }
                   export async function getDessertsById(id) {
                     if (!/^\d+$/.test(id)) return undefined;
 

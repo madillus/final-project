@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { default: Axios } = require('axios');
+const { Axios } = require('axios');
 const express = require('express');
 const app = express();
 const CloudinaryImage = require('./db/images');

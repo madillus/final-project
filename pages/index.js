@@ -39,7 +39,7 @@ flex-direction: column;
 align-items: center;
 border-radius: .5rem .5rem;
 opacity: 90%;
-margin-top: 12rem;
+margin-top: 8rem;
 margin-right: 10rem;
 right: 0px;
 width: 45%;
@@ -208,6 +208,84 @@ display: flex;
 justify-content: center;
 
 `;
+const WelcomeText = styled.div`
+position: absolute;
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: .5rem .5rem;
+opacity: 90%;
+margin-top: 8rem;
+margin-left: 10rem;
+left: 0px;
+width: 45%;
+height: auto;
+background-color: #2e2d26;
+margin-bottom: 10rem;
+z-index: 8;
+@media (max-width: 768px) {
+  width: 70%;
+  margin-left: auto;
+  margin-top: 12rem;
+  margin-right: 15%;
+  align-items: center;
+  opacity: 80%;
+  font-size: 1rem;
+
+}
+`;
+const WelcomeCard = styled.div`
+position: absolute;
+display: flex;
+flex-direction: column;
+font-size: 1.5rem;
+align-items: center;
+border-radius: .5rem .5rem;
+opacity: 90%;
+margin-top: 6rem;
+margin-left: 3rem;
+left: 0px;
+width: 60%;
+height: 60%;
+background-color: #2e2d26;
+margin-bottom: 10rem;
+z-index: 8;
+@media (max-width: 768px) {
+  width: 70%;
+  margin-left: auto;
+  margin-top: 6rem;
+  margin-right: 15%;
+  align-items: center;
+  opacity: 80%;
+  font-size: 1rem;
+
+}
+`;
+
+const WelcomeCardText = styled.h1`
+color: whitesmoke;
+text-align: center;
+padding: 3rem;
+margin-top: 2rem;
+opacity: 100%;
+@media (max-width: 768px) {
+  font-size: 1.25rem;
+  letter-spacing: .05rem;
+  display: none;
+}
+`;
+const WelcomeTextStory = styled.p`
+color: whitesmoke;
+text-align: center;
+padding: 3rem;
+
+opacity: 100%;
+@media (max-width: 768px) {
+  font-size: 1.25rem;
+  letter-spacing: .05rem;
+  display: none;
+}
+`;
 
 
 
@@ -218,7 +296,7 @@ function App() {
     <FirstSection>
       <FirstSectionText>
       <CardText>1516 BREWING COMPANY</CardText>
-        <CardText>REAL BEER STRAIGHT FROM THE HEART OF VIENNA<br></br>OTHER TEXT</CardText>
+        <CardText>REAL BEER STRAIGHT FROM THE HEART OF VIENNA</CardText>
         <Link href="/menu">
         <MenuButton>MENU</MenuButton>
         </Link>
@@ -233,7 +311,12 @@ function App() {
     <ThirdSection>
     <FirstSectionImage src={tableRibs} alt='ribs' id='tableRibs' />
       <OuterNewsletter>
-
+      <WelcomeCard>
+        <WelcomeCardText>
+      1516 Brewing Company est.1999
+      </WelcomeCardText>
+      <br></br>
+      <WelcomeTextStory>Brewpub in the heart of Vienna. Fresh craft beer brewed on the premises. Open daily, hot food served till late. Kitchen hours from 11:30am until 2am. <br></br></WelcomeTextStory></WelcomeCard>
       <NewsletterCard>
       <Newsletter />
       </NewsletterCard>

@@ -1,11 +1,10 @@
-
-
 import { useState } from "react";
 import { Tabs, Tab, Content } from "../components/Tabs";
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Link from 'next/link'
 import Image from 'next/image';
+import Head from 'next/head'
 
 const FirstSection = styled.div`
 height: auto;
@@ -129,7 +128,9 @@ export default function Menu (props) {
     }
   };
   return (
+
     <Layout>
+      <Head><title>Menu</title></Head>
       <FirstSection>
         <FirstSectionText>
 
@@ -178,13 +179,13 @@ export default function Menu (props) {
           {props.bbq.map((bbq) => {
             return (
               <StyledGrid key={bbq.id}>
-                <StyledItem>{bbq.name}| {bbq.german_name} </StyledItem>
+                <StyledItem>{bbq.name}| {bbq.germanName} </StyledItem>
                 <StyledItem> </StyledItem>
                 <StyledPrice>€ {bbq.price}0</StyledPrice>
                 <StyledDescription>{bbq.description} </StyledDescription>
                 <StyledDescription></StyledDescription>
                 <StyledDescription></StyledDescription>
-                <StyledDescription> {bbq.german_description} </StyledDescription>
+                <StyledDescription> {bbq.germanDescription} </StyledDescription>
                 <StyledDescription></StyledDescription>
                 <StyledDescription></StyledDescription>
                 <StyledAllergens>{bbq.allergens}</StyledAllergens>

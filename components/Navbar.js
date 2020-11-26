@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Menu from './Menu';
 import headerImage from '../images/headerImage.png'
 import Link from 'next/link';
+import Image from 'next/image'
 
 const Nav = styled.nav`
 width: 100%;

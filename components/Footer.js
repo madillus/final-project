@@ -45,13 +45,15 @@ export default function Footer() {
 
       <FooterBottom>
         <IconBox>
-          <Link href="https://www.facebook.com">
+          <Link href="https://www.facebook.com/1516-Brewing-Company-45023484159">
             <FacebookIcon style={{ cursor: 'pointer' }} />
           </Link>
-
+          <Link href= "https://www.instagram.com/1516brewingcompany/" >
           <InstagramIcon style={{ cursor: 'pointer' }} />
-
+          </Link>
+          <Link href= "hq@1516brewingcompany.com">
           <EmailIcon style={{ cursor: 'pointer' }} />
+          </Link>
         </IconBox>
 
         <Copyright> ©Copyright 2020 All rights reserved. 1516 Brewing Company®</Copyright>

@@ -28,10 +28,7 @@ export const Tab = styled.button`
   outline: none;
   cursor: pointer;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
-
-
   position: static;
-
   font-size: 1em;
   border: ${props => (props.active ? "none" : "")};
   border-radius: ${props => (props.active ? "0.5rem 0.5rem 0.5rem 0.5rem" : "0.5rem 0.5rem 0.5rem 0.5rem")};

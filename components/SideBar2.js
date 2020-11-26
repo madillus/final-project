@@ -41,10 +41,10 @@ const Ul = styled.ul`
   }
   `
 
-const Sidebar = ({ open }) => {
+const Sidebar = () => {
   return (
     <SideBar>
-    <Ul open={open}>
+    <Ul>
       <li>
         <Link href="/">
           <BlankLink>BEERS</BlankLink>
@@ -62,7 +62,7 @@ const Sidebar = ({ open }) => {
           <BlankLink>MITTAGS</BlankLink>
         </Link></li>
       <li>
-        <Link href="/about">
+        <Link href="/admin/seasonaladmin">
           <BlankLink>SEASONAL</BlankLink>
         </Link></li>
       <li>
@@ -70,36 +70,40 @@ const Sidebar = ({ open }) => {
           <BlankLink>BBQ</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/classicsadmin">
           <BlankLink>CLASSICS</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/dessertsadmin">
           <BlankLink>DESSERTS</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/saladsadmin">
           <BlankLink>SALADS</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/sandwichesadmin">
           <BlankLink>SANDWICHES</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/sausagesadmin">
           <BlankLink>SAUSAGES</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/sidesadmin">
           <BlankLink>SIDES</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/snacksadmin">
           <BlankLink>SNACKS</BlankLink>
         </Link></li>
         <li>
-        <Link href="/">
+        <Link href="/admin/soupsadmin">
           <BlankLink>SOUPS</BlankLink>
+        </Link></li>
+        <li>
+        <Link href="/logout">
+          <BlankLink>LOGOUT</BlankLink>
         </Link></li>
 
     </Ul>

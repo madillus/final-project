@@ -12,7 +12,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   await deleteSessionByToken(token);
 
-  // Remove the cookie
   context.res.setHeader(
     'Set-Cookie',
     cookie.serialize('session', '', {
