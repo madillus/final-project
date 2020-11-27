@@ -1,4 +1,4 @@
-import { getSessionByToken } from './dbbeers';
+import { getSessionByToken } from './dbmenu';
 
 export async function isSessionTokenValid(token: string | undefined) {
   if (typeof token === 'undefined') {

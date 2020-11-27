@@ -153,7 +153,7 @@ return (
 
 export async function getServerSideProps(context) {
 
-  const { getBeers } = await import('../../util/dbbeers');
+  const { getBeers } = await import('../../util/dbmenu');
   const beers = await getBeers();
   return {
     props: {beers}

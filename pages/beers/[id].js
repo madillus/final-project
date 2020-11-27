@@ -125,7 +125,7 @@ return (
 
 export async function getServerSideProps(context) {
   const id = context.query.id;
-  const { getBeerById } = await import('../../util/dbbeers');
+  const { getBeerById } = await import('../../util/dbmenu');
   const beer = await getBeerById(id);
 
 
