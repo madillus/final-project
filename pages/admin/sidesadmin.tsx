@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function sidesAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const sides = props.sides;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function sidesAdmin(props: Props) {
 
       <div>
         <ul>
-          {sides.map((sides) => {
+          {props.sides.map((sides) => {
             return (
               <StyledGrid key={sides.id}>
                 <StyledButton
@@ -183,7 +182,7 @@ export default function sidesAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[sides.id]}`, {
+                        await fetch(`/api/menu/sides/${[sides.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -252,15 +251,18 @@ export default function sidesAdmin(props: Props) {
                         if (answer === true) {
                           const id = sides.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/sides/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                sidesId: sides.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              sidesId: sides.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/sidesadmin');
                         } else {

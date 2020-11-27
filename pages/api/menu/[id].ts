@@ -36,9 +36,6 @@ export default async function handler(
   response.end(JSON.stringify({ bbq: bbq }));
 }
 
-
-
-
 // export  async function handler2(
 //   request: NextApiRequest,
 //   response: NextApiResponse,

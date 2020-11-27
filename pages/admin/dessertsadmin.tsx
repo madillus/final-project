@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function dessertsAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const desserts = props.desserts;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function dessertsAdmin(props: Props) {
 
       <div>
         <ul>
-          {desserts.map((desserts) => {
+          {props.desserts.map((desserts) => {
             return (
               <StyledGrid key={desserts.id}>
                 <StyledButton
@@ -185,7 +184,7 @@ export default function dessertsAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[desserts.id]}`, {
+                        await fetch(`/api/menu/desserts/${[desserts.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -254,7 +253,7 @@ export default function dessertsAdmin(props: Props) {
                         if (answer === true) {
                           const id = desserts.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
+                          const response = await fetch(`/api/menu/desserts/${id}`, {
                             method: 'DELETE',
                             headers: {
                               'Content-Type': 'application/json',

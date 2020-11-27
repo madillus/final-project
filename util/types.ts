@@ -20,7 +20,6 @@ export type Bbq = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 export type Seasonal = {
   id: number;
@@ -31,7 +30,6 @@ export type Seasonal = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Classics = {
@@ -43,7 +41,6 @@ export type Classics = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Desserts = {
@@ -55,7 +52,6 @@ export type Desserts = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Sandwiches = {
@@ -67,7 +63,6 @@ export type Sandwiches = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Sausages = {
@@ -79,7 +74,6 @@ export type Sausages = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Sides = {
@@ -91,7 +85,6 @@ export type Sides = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Salads = {
@@ -103,7 +96,6 @@ export type Salads = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 
 export type Snacks = {
@@ -115,7 +107,6 @@ export type Snacks = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };
 export type Soups = {
   id: number;
@@ -126,5 +117,4 @@ export type Soups = {
   germanDescription: string;
   allergens: string;
   price: number;
-
 };

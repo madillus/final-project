@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function saladsAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const salads = props.salads;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function saladsAdmin(props: Props) {
 
       <div>
         <ul>
-          {salads.map((salads) => {
+          {props.salads.map((salads) => {
             return (
               <StyledGrid key={salads.id}>
                 <StyledButton
@@ -183,7 +182,7 @@ export default function saladsAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[salads.id]}`, {
+                        await fetch(`/api/menu/salads/${[salads.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -252,15 +251,18 @@ export default function saladsAdmin(props: Props) {
                         if (answer === true) {
                           const id = salads.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/salads/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                saladsId: salads.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              saladsId: salads.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/saladsadmin');
                         } else {

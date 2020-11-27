@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../../components/Layout';
-// import { user } from '../../../util/types';
 
 export default function UserList() {
   return (

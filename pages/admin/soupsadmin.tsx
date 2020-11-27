@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function soupsAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const soups = props.soups;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function soupsAdmin(props: Props) {
 
       <div>
         <ul>
-          {soups.map((soups) => {
+          {props.soups.map((soups) => {
             return (
               <StyledGrid key={soups.id}>
                 <StyledButton
@@ -184,7 +183,7 @@ export default function soupsAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[soups.id]}`, {
+                        await fetch(`/api/menu/soups/${[soups.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -226,6 +225,7 @@ export default function soupsAdmin(props: Props) {
                     <StyledButton
                       onClick={() => {
                         setEditingKey(null);
+                        window.location.reload();
                       }}
                     >
                       cancel
@@ -257,15 +257,18 @@ export default function soupsAdmin(props: Props) {
                         if (answer === true) {
                           const id = soups.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/soups/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                soupsId: soups.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              soupsId: soups.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/soupsadmin');
                         } else {

@@ -85,7 +85,6 @@ const StyledInputItem = styled.input`
 export default function seasonalAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  // const seasonal = props.seasonal;
   const [editingId, setEditingId] = useState<number>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string>();
@@ -173,7 +172,7 @@ export default function seasonalAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`/api/menu/${seasonal.id}`, {
+                        await fetch(`/api/menu/seasonal/${seasonal.id}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -247,7 +246,7 @@ export default function seasonalAdmin(props: Props) {
                           const id = seasonal.id;
 
                           const response = await fetch(
-                            `/api/menu/${seasonal.id}`,
+                            `/api/menu/seasonal/${seasonal.id}`,
                             {
                               method: 'DELETE',
                               headers: {

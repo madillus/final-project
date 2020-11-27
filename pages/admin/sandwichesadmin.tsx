@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function sandwichesAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const sandwiches = props.sandwiches;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function sandwichesAdmin(props: Props) {
 
       <div>
         <ul>
-          {sandwiches.map((sandwiches) => {
+          {props.sandwiches.map((sandwiches) => {
             return (
               <StyledGrid key={sandwiches.id}>
                 <StyledButton
@@ -185,7 +184,7 @@ export default function sandwichesAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[sandwiches.id]}`, {
+                        await fetch(`/api/menu/sandwiches/${[sandwiches.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -254,15 +253,18 @@ export default function sandwichesAdmin(props: Props) {
                         if (answer === true) {
                           const id = sandwiches.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/sandwiches/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                sandwichesId: sandwiches.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              sandwichesId: sandwiches.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/sandwichesadmin');
                         } else {

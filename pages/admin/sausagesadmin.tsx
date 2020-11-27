@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function sausagesAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const sausages = props.sausages;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function sausagesAdmin(props: Props) {
 
       <div>
         <ul>
-          {sausages.map((sausages) => {
+          {props.sausages.map((sausages) => {
             return (
               <StyledGrid key={sausages.id}>
                 <StyledButton
@@ -185,7 +184,7 @@ export default function sausagesAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[sausages.id]}`, {
+                        await fetch(`/api/menu/sausages/${[sausages.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -254,15 +253,18 @@ export default function sausagesAdmin(props: Props) {
                         if (answer === true) {
                           const id = sausages.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/sausages/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                sausagesId: sausages.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              sausagesId: sausages.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/sausagesadmin');
                         } else {

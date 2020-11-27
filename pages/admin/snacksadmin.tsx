@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function snacksAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const snacks = props.snacks;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function snacksAdmin(props: Props) {
 
       <div>
         <ul>
-          {snacks.map((snacks) => {
+          {props.snacks.map((snacks) => {
             return (
               <StyledGrid key={snacks.id}>
                 <StyledButton
@@ -183,7 +182,7 @@ export default function snacksAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[snacks.id]}`, {
+                        await fetch(`/api/menu/snacks/${[snacks.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -252,15 +251,18 @@ export default function snacksAdmin(props: Props) {
                         if (answer === true) {
                           const id = snacks.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/snacks/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                snacksId: snacks.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              snacksId: snacks.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/snacksadmin');
                         } else {

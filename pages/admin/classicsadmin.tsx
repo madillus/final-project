@@ -105,7 +105,6 @@ const StyledInputItem = styled.input`
 export default function classicsAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
-  const classics = props.classics;
   const [editingId, setEditingId] = useState<number | null>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [name, setName] = useState<string | null>();
@@ -137,7 +136,7 @@ export default function classicsAdmin(props: Props) {
 
       <div>
         <ul>
-          {classics.map((classics) => {
+          {props.classics.map((classics) => {
             return (
               <StyledGrid key={classics.id}>
                 <StyledButton
@@ -185,7 +184,7 @@ export default function classicsAdmin(props: Props) {
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[classics.id]}`, {
+                        await fetch(`/api/menu/classics/${[classics.id]}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -254,15 +253,18 @@ export default function classicsAdmin(props: Props) {
                         if (answer === true) {
                           const id = classics.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/classics/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                classicsId: classics.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              classicsId: classics.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/classicsadmin');
                         } else {

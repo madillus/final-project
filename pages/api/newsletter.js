@@ -1,28 +1,21 @@
-import axios from "axios";
+import axios from 'axios';
 
 function getRequestParams(email) {
-
-
   const API_KEY = process.env.MAILCHIMP_API_KEY;
   const LIST_ID = process.env.MAILCHIMP_LIST_ID;
-
-
-
-  const DATACENTER = process.env.MAILCHIMP_API_KEY.split("-")[1];
-
+  const DATACENTER = process.env.MAILCHIMP_API_KEY.split('-')[1];
   const url = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`;
-
 
   // https://mailchimp.com/developer/reference/lists/list-members/
   const data = {
     email_address: email,
-    status: "subscribed",
+    status: 'subscribed',
   };
 
   // Api key needs to be encoded in base 64 format
-  const base64ApiKey = Buffer.from(`anystring:${API_KEY}`).toString("base64");
+  const base64ApiKey = Buffer.from(`anystring:${API_KEY}`).toString('base64');
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     Authorization: `Basic ${base64ApiKey}`,
   };
 
@@ -38,7 +31,7 @@ export default async (req, res) => {
 
   if (!email || !email.length) {
     return res.status(400).json({
-      error: "Forgot to add your email?",
+      error: 'Forgot to add your email?',
     });
   }
 
@@ -53,7 +46,5 @@ export default async (req, res) => {
     return res.status(400).json({
       error: `Oops, something went wrong....`,
     });
-
-
   }
 };

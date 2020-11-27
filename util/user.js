@@ -73,7 +73,6 @@ export async function getUserBySessionToken(token) {
   return users.map((u) => camelcaseKeys(u))[0];
 }
 
-
 // import postgres from 'postgres';
 // import dotenv from 'dotenv';
 // import camelcaseKeys from 'camelcase-keys';

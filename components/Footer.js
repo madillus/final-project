@@ -25,7 +25,7 @@ const IconBox = styled.section`
   color: ghostwhite;
   margin: auto;
   @media (max-width: 768px) {
-  width: 15rem;
+    width: 15rem;
   }
 `;
 
@@ -42,23 +42,24 @@ const Copyright = styled.p`
 
 export default function Footer() {
   return (
-
-      <FooterBottom>
-        <IconBox>
-          <Link href="https://www.facebook.com/1516-Brewing-Company-45023484159">
-            <FacebookIcon style={{ cursor: 'pointer' }} />
-          </Link>
-          <Link href= "https://www.instagram.com/1516brewingcompany/" >
+    <FooterBottom>
+      <IconBox>
+        <Link href="https://www.facebook.com/1516-Brewing-Company-45023484159">
+          <FacebookIcon style={{ cursor: 'pointer' }} />
+        </Link>
+        <Link href="https://www.instagram.com/1516brewingcompany/">
           <InstagramIcon style={{ cursor: 'pointer' }} />
-          </Link>
-          <Link href= "mailto:hq@1516brewingcompany.com">
+        </Link>
+        <Link href="mailto:hq@1516brewingcompany.com">
           <EmailIcon style={{ cursor: 'pointer' }} />
-          </Link>
-        </IconBox>
+        </Link>
+      </IconBox>
 
-        <Copyright> ©Copyright 2020 All rights reserved. 1516 Brewing Company®</Copyright>
-      </FooterBottom>
-
+      <Copyright>
+        {' '}
+        ©Copyright 2020 All rights reserved. 1516 Brewing Company®
+      </Copyright>
+    </FooterBottom>
   );
 }
 

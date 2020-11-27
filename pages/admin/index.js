@@ -1,10 +1,9 @@
-
-import HomeIcon from "@material-ui/icons/Home";
+import HomeIcon from '@material-ui/icons/Home';
 import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
-import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
-import SettingsIcon from "@material-ui/icons/Settings";
-import Sidebar from "../../components/SideBar2";
+import DesktopWindowsIcon from '@material-ui/icons/DesktopWindows';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Sidebar from '../../components/SideBar2';
 import Link from 'next/link';
 
 //
@@ -18,8 +17,6 @@ function App() {
 }
 
 export default App;
-
-
 
 //  // {
 //           //   name: "desktop",

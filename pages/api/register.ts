@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import argon2 from 'argon2'
-import Tokens from 'csrf'
-import { registerUser, getUserByUsername} from '../../util/user';
+import argon2 from 'argon2';
+import Tokens from 'csrf';
+import { registerUser, getUserByUsername } from '../../util/user';
 
 const tokens = new Tokens();
 
@@ -26,17 +26,14 @@ export default async function handler(
   const usernameAlreadyTaken =
     typeof (await getUserByUsername(username)) !== 'undefined';
 
-
-    if (usernameAlreadyTaken) {
-
-      return response.status(409).send({ success: false });
-    }
-    try {
-      const passwordHash = await argon2.hash(password);
-      await registerUser(username, passwordHash);
-    } catch (err) {
-      return response.status(500).send({ success: false });
-    }
-    response.send({ success: true });
-
+  if (usernameAlreadyTaken) {
+    return response.status(409).send({ success: false });
+  }
+  try {
+    const passwordHash = await argon2.hash(password);
+    await registerUser(username, passwordHash);
+  } catch (err) {
+    return response.status(500).send({ success: false });
+  }
+  response.send({ success: true });
 }
