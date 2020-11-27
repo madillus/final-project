@@ -75,6 +75,16 @@ width: 20%;
 }
 `;
 
+const BeerGrid =styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". .";
+`
+
 
 export default function Beer(props) {
   // const beer = beer.find((currentBeer) => {
@@ -88,15 +98,19 @@ return (
   <Layout>
     <FirstSection>
       <FirstSectionText>
-        <CardText>
-
+        <BeerGrid>
+            <div>
             {props.beer.name}
-              <br />
-            {props.beer.description}
-              <br />
-              <BeerImage src={props.beer.slug}  />
+            </div>
 
-        </CardText>
+              <BeerImage src={props.beer.slug}/>
+              <div>
+            {props.beer.description}
+            </div>
+              <div></div>
+
+
+        </BeerGrid>
       </FirstSectionText>
         <FirstSectionImage src={landingImage} alt='logo' id='landingImage' />
         <FirstSectionMobileImage src={singleBeer} alt='logo' id='singleBeer' />

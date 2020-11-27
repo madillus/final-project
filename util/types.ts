@@ -16,9 +16,9 @@ export type Bbq = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -27,9 +27,9 @@ export type Seasonal = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -39,9 +39,9 @@ export type Classics = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -51,9 +51,9 @@ export type Desserts = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -63,9 +63,9 @@ export type Sandwiches = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -75,9 +75,9 @@ export type Sausages = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -87,9 +87,9 @@ export type Sides = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -99,9 +99,9 @@ export type Salads = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -111,9 +111,9 @@ export type Snacks = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };
@@ -122,9 +122,9 @@ export type Soups = {
   passwordHash: string;
   name: string;
   germanName: string;
-  description: String;
-  germanDescription: String;
-  allergens: String;
+  description: string;
+  germanDescription: string;
+  allergens: string;
   price: number;
 
 };

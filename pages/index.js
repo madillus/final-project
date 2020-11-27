@@ -154,11 +154,10 @@ margin-bottom: 10rem;
 z-index: 8;
 @media (max-width: 768px) {
   width: 70%;
-  margin-left: auto;
+  margin-left: 15%;
   margin-top: 6rem;
   margin-right: 15%;
   align-items: center;
-  opacity: 80%;
   font-size: 1rem;
 
 }
@@ -199,13 +198,21 @@ border-radius: .5rem .5rem;
 position: absolute;
 background-color: white;
 color: ghostwhite;
-fill: white;
-max-height: 80%;
-max-width: 80%;
 width: 80%;
-height: 40rem;
+height: 40.5rem;
 display: flex;
 justify-content: center;
+@media (max-width: 768px) {
+  width: 84%;
+  margin-left: 8%;
+  margin-top: 12rem;
+  margin-right: 8%;
+  align-items: center;
+
+  font-size: 1rem;
+
+
+}
 
 `;
 const WelcomeText = styled.div`
@@ -251,13 +258,7 @@ background-color: #2e2d26;
 margin-bottom: 10rem;
 z-index: 8;
 @media (max-width: 768px) {
-  width: 70%;
-  margin-left: auto;
-  margin-top: 6rem;
-  margin-right: 15%;
-  align-items: center;
-  opacity: 80%;
-  font-size: 1rem;
+  display: none;
 
 }
 `;

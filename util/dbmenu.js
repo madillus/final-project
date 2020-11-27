@@ -10,15 +10,86 @@ dotenv.config();
 
 const sql =
   process.env.NODE_ENV === 'production'
-    ? // "Unless you're using a Private or Shield Heroku Postgres database, Heroku Postgres does not currently support verifiable certificates"
-      // https://help.heroku.com/3DELT3RK/why-can-t-my-third-party-utility-connect-to-heroku-postgres-with-ssl
+    ?
       postgres({ ssl: { rejectUnauthorized: false } })
     : postgres({
-        // Avoid the error below of using too many connection slots with
-        // Next.js hot reloading:
-        // Error: remaining connection slots are reserved for non-replication superuser connectionsError: remaining connection slots are reserved for non-replication superuser connections
         idle_timeout: 5,
       });
+
+
+//-----------------------------Beers-----------------
+
+export async function getBeers() {
+  const beers = await sql`
+  SELECT * FROM beers;
+  `;
+  return beers.map((beer) => {
+      return {
+        id: beer.id,
+        name: beer.name,
+        description: beer.description,
+        slug: beer.slug
+      };
+    });
+  }
+
+  export async function getBeerById(id) {
+    if (!/^\d+$/.test(id)) return undefined;
+
+    const beers = await sql`
+      SELECT * FROM beers WHERE id = ${id};
+    `;
+
+    const camelcaseBeers = beers.map(camelcaseKeys);
+    return camelcaseBeers[0];
+  }
+
+  export async function updateBeerById(id, beer) {
+    if (!/^\d+$/.test(id)) return undefined;
+
+    const beers = await sql`
+      UPDATE beers
+        SET first_name = ${beer.name}
+        WHERE id = ${id}
+        RETURNING *;
+    `;
+
+    const camelcaseBeers = beers.map(camelcaseKeys);
+    return camelcaseBeers[0];
+  }
+
+  export async function deleteBeerById(id) {
+    // Return undefined if the id is not
+    // in the correct format
+    if (!/^\d+$/.test(id)) return undefined;
+
+    const beers = await sql(id)`
+      DELETE FROM beers
+        WHERE id = ${id}
+        RETURNING *;
+    `;
+
+    return beers.map((u) => camelcaseKeys(u))[0];
+  }
+
+
+
+
+
+
+
+
+  // sql.end();
+
+  export async function getSessionByToken(token) {
+    const sessions = await sql`
+      SELECT * FROM sessions WHERE token = ${token};
+    `;
+
+    return sessions.map((s) => camelcaseKeys(s))[0];
+  }
+
+//--------------------------------------BBQ-----------------------------------------
 
 
 export async function getBbq() {
@@ -55,13 +126,17 @@ export async function updateBbqById(id, bbq) {
 
   const bbqs = await sql`
     UPDATE bbq
-      SET name = ${bbq.name}
+      SET name = ${bbq.name},
+      german_name = ${bbq.germanName},
+      description = ${bbq.description},
+      german_description = ${bbq.germanDescription},
+      allergens = ${bbq.allergens},
+      price = ${bbq.price}
       WHERE id = ${id}
       RETURNING *;
   `;
 
-  const camelcaseBbq = bbqs.map(camelcaseKeys);
-  return camelcaseBbq[0];
+  return bbqs.map((u) => camelcaseKeys(u))[0];
 }
 export async function deleteBbqById(id) {
   // Return undefined if the id is not
@@ -109,6 +184,8 @@ export async function insertBbq(bbq) {
   return bbqs.map((u) => camelcaseKeys(u))[0];
 }
 
+//--------------------------------------Seasonal-----------------------------------------
+
 export async function getSeasonal() {
   const seasonal = await sql`
   SELECT * FROM seasonal;
@@ -131,14 +208,19 @@ export async function getSeasonal() {
 
     const seasonals = await sql`
       UPDATE seasonal
-        SET name = ${seasonal.name}
-        WHERE id = ${id}
-        RETURNING *;
-    `;
+      SET name = ${seasonal.name},
+      german_name = ${seasonal.germanName},
+      description = ${seasonal.description},
+      german_description = ${seasonal.germanDescription},
+      allergens = ${seasonal.allergens},
+      price = ${seasonal.price}
+      WHERE id = ${id}
+      RETURNING *;
+  `;
 
-    return seasonal.map((u) => camelcaseKeys(u))[0];
+  return seasonals.map((u) => camelcaseKeys(u))[0];
   }
-  export async function deleteseasonalById(id) {
+  export async function deleteSeasonalById(id) {
     // Return undefined if the id is not
     // in the correct format
     if (!/^\d+$/.test(id)) return undefined;
@@ -183,6 +265,8 @@ export async function getSeasonal() {
 
     return seasonals.map((u) => camelcaseKeys(u))[0];
   }
+
+  //--------------------------------------Classics-----------------------------------------
 
   export async function getClassics() {
     const classics = await sql`
@@ -260,6 +344,8 @@ export async function getSeasonal() {
       return classic.map((u) => camelcaseKeys(u))[0];
     }
 
+    //--------------------------------------Sandwiches-----------------------------------------
+
     export async function getSandwiches() {
       const sandwiches = await sql`
       SELECT * FROM sandwiches;
@@ -335,6 +421,8 @@ export async function getSeasonal() {
 
         return sandwich.map((u) => camelcaseKeys(u))[0];
       }
+
+      //--------------------------------------Salads-----------------------------------------
 
       export async function getSalads() {
         const salads = await sql`
@@ -412,6 +500,8 @@ export async function getSeasonal() {
           return salad.map((u) => camelcaseKeys(u))[0];
         }
 
+        //--------------------------------------Sausages-----------------------------------------
+
         export async function getSausages() {
           const sausages = await sql`
           SELECT * FROM sausages;
@@ -487,6 +577,8 @@ export async function getSeasonal() {
 
             return sausage.map((u) => camelcaseKeys(u))[0];
           }
+
+          //--------------------------------------Soups-----------------------------------------
 
           export async function getSoups() {
             const soups = await sql`
@@ -564,6 +656,8 @@ export async function getSeasonal() {
               return soup.map((u) => camelcaseKeys(u))[0];
             }
 
+            //--------------------------------------Snacks-----------------------------------------
+
             export async function getSnacks() {
               const snacks = await sql`
               SELECT * FROM snacks;
@@ -640,6 +734,8 @@ export async function getSeasonal() {
                 return snack.map((u) => camelcaseKeys(u))[0];
               }
 
+              //--------------------------------------Sides-----------------------------------------
+
               export async function getSides() {
                 const sides = await sql`
                 SELECT * FROM sides;
@@ -715,6 +811,8 @@ export async function getSeasonal() {
 
                   return side.map((u) => camelcaseKeys(u))[0];
                 }
+
+                //--------------------------------------Desserts-----------------------------------------
 
                 export async function getDesserts() {
                   const desserts = await sql`

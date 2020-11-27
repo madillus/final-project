@@ -1,8 +1,11 @@
-
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import landingImage from '../images/landingImage.jpg'
 import singleBeer from '../images/singleBeer.png'
+
+
+
+
 
 const FirstSection = styled.div`
 height: auto;
@@ -32,8 +35,11 @@ function About () {
 return (
   <Layout>
     <FirstSection>
+
       <FirstSectionImage src={landingImage} alt='logo' id='landingImage' />
       <FirstSectionMobileImage src={singleBeer} alt='logo' id='singleBeer' />
+
+
     </FirstSection>
   </Layout>
   )

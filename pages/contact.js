@@ -12,43 +12,28 @@ display: flex;
 justify-content: center;
 `;
 
-const FirstSectionImage = styled.img`
-padding: none;
-width: 100%;
-@media (max-width: 768px) {
-  display: none;
-}
-`;
 
-const FirstSectionMobileImage = styled.img`
-padding: none;
-width: 100%;
-@media (min-width: 768px) {
-  display: none;
-}
-`;
 const FirstSectionText = styled.div`
 position: absolute;
 display: flex;
 flex-direction: column;
-justify-content: space-between;
-font-size: 1rem;
+align-items: center;
 border-radius: .5rem .5rem;
+opacity: 90%;
 margin-top: 8rem;
-margin-right: auto;
-margin-left: auto;
-letter-spacing: .5px;
-width: 45%;
+margin-right: 20%;
+margin-left: 20%;
+
+width: 60%;
 height: auto;
-background-color: ghostwhite;
+background-color: #2e2d26;
 margin-bottom: 10rem;
 z-index: 8;
 @media (max-width: 768px) {
-  width: 70%;
-  margin-left: auto;
-  margin-top: 6rem;
-  margin-right: 15%;
-  margin-left: 15%;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 7rem;
+  margin-right: 5%;
   align-items: center;
   opacity: 80%;
   font-size: 1rem;
@@ -56,32 +41,40 @@ z-index: 8;
 }
 `;
 const CardMap = styled.div`
-color: black;
-text-align: left;
+color: whitesmoke;
+text-align: center;
 padding: 1.7rem;
 margin-top: 1rem;
 opacity: 100%;
 @media (max-width: 768px) {
-  font-size: 1rem;
-  letter-spacing: .05rem;
+  display: none;
 
 }
 `;
 
 
-const CardText = styled.h1`
-color: black;
-font-size: 1.5rem;
+const CardText = styled.p`
+color: whitesmoke;
 text-align: left;
 padding: 1.7rem;
-margin: 3rem;
+margin-top: 2rem;
 opacity: 100%;
+font-size: 1rem;
+letter-spacing: .05rem;
+line-height: 1.2rem;
 @media (max-width: 768px) {
-  font-size: 1rem;
-  letter-spacing: .05rem;
+  font-size: .75rem;
+width: 90%;
+margin-left: 5%;
+margin-right: 5%;
+  margin-top: 0;
 
-}
-`;
+}`
+
+const Heading = styled.h1`
+text-align: center;
+color: #c00c1a;
+`
 
 
 function Contact () {
@@ -89,7 +82,7 @@ return (
   <Layout>
     <FirstSection>
 
-      <FirstSectionText>Contact Us
+      <FirstSectionText><Heading>Contact Us</Heading>
         <CardText>
           <br></br>
 
@@ -111,8 +104,8 @@ return (
           </CardText>
           <CardMap classname='google-map-code'>
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1329.6178038405844!2d16.3746737!3d48.2020776!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079d7448871d%3A0x3247408377e4c1d2!2sGarage%20Palais%20Corso!5e0!3m2!1sen!2sat!4v1606213875199!5m2!1sen!2sat" width="480" height="360" frameborder="1" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></CardMap>
-        BIP GARAGEN | BREITENEDER IMMOBILIEN PARKING
-Um nur EUR 6,- für 6 Stunden Parken in unmittelbarer Nähe zu 1516 Brewing Company (18.00 – 24.00 Uhr)!
+        <CardText> BIP GARAGEN | BREITENEDER IMMOBILIEN PARKING
+Um nur EUR 6,- für 6 Stunden Parken in unmittelbarer Nähe zu 1516 Brewing Company (18.00 – 24.00 Uhr)!</CardText>
 
 
 
@@ -122,8 +115,8 @@ Um nur EUR 6,- für 6 Stunden Parken in unmittelbarer Nähe zu 1516 Brewing Comp
     alt='logo'
     id='landingImage'
     width={1920}
-    height={1700}
-    style={{objectFit:'fill', width: 'full', height: 'full'}}   />
+    height={2800}
+    style={{objectFit:'fill'}}   />
     </FirstSection>
   </Layout>
   )
@@ -133,3 +126,19 @@ export default Contact;
 
 {/* <FirstSectionImage src={landingImage} alt='logo' id='landingImage' />
       <FirstSectionMobileImage src={singleBeer} alt='logo' id='singleBeer' /> */}
+
+//       const FirstSectionImage = styled.img`
+// padding: none;
+// width: 100%;
+// @media (max-width: 768px) {
+//   display: none;
+// }
+// `;
+
+// const FirstSectionMobileImage = styled.img`
+// padding: none;
+// width: 100%;
+// @media (min-width: 768px) {
+//   display: none;
+// }
+// `;

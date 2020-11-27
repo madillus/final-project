@@ -9,7 +9,6 @@ import nextCookies from 'next-cookies';
 import Layout from '../../components/Layout';
 import styled from 'styled-components';
 import { isSessionTokenValid } from '../../util/auth';
-import { event } from 'cypress/types/jquery';
 
 type Props = {
   bbq: Bbq[];
@@ -87,14 +86,14 @@ export default function BbqAdmin(props: Props) {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
   // const bbq = props.bbq;
-  const [editingId, setEditingId] = useState<number | null>();
+  const [editingId, setEditingId] = useState<number>();
   const [editingKey, setEditingKey] = useState<string | null>(null);
-  const [name, setName] = useState<string | null>();
-  const [germanName, setGermanName] = useState<string | null>();
-  const [description, setDescription] = useState<string | null>();
-  const [germanDescription, setGermanDescription] = useState<string | null>();
-  const [allergens, setAllergens] = useState<string | null>();
-  const [price, setPrice] = useState<number | null>();
+  const [name, setName] = useState<string>();
+  const [germanName, setGermanName] = useState<string>();
+  const [description, setDescription] = useState<string>();
+  const [germanDescription, setGermanDescription] = useState<string>();
+  const [allergens, setAllergens] = useState<string>();
+  const [price, setPrice] = useState<string | number>();
 
   // const [bbq, setBbq] = useState();
 
@@ -117,7 +116,7 @@ export default function BbqAdmin(props: Props) {
   }
 
   return (
-    <StyledAdmin loggedIn={props.loggedIn}>
+    <StyledAdmin>
       <Sidebar />
       <Head>
         <title>Bbq</title>
@@ -133,6 +132,12 @@ export default function BbqAdmin(props: Props) {
                 <StyledButton
                   onClick={() => {
                     setEditingId(bbq.id);
+                    setName(bbq.name);
+                    setGermanName(bbq.germanName);
+                    setDescription(bbq.description);
+                    setGermanDescription(bbq.germanDescription);
+                    setAllergens(bbq.allergens);
+                    setPrice(bbq.price);
                   }}
                 >
                   edit
@@ -162,19 +167,20 @@ export default function BbqAdmin(props: Props) {
                     <StyledInputItem
                       name="Name"
                       type="text"
-                      value={bbq.name}
+                      value={name}
                       placeholder="Name"
                       onChange={(event) => setName(event.target.value)}
                     ></StyledInputItem>
                     <StyledInputItem
                       name="Price"
                       type="text"
-                      value={bbq.price}
-                      onChange={(event) => setPrice(event.currentTarget.value)}
+                      value={price}
+                      placeholder="Price"
+                      onChange={(event) => setPrice(event.target.value)}
                     ></StyledInputItem>
                     <StyledButton
                       onClick={async () => {
-                        await fetch(`../api/menu/${[props.bbq]}`, {
+                        await fetch(`/api/menu/${bbq.id}`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json',
@@ -196,9 +202,10 @@ export default function BbqAdmin(props: Props) {
                       save
                     </StyledButton>
                     <StyledInputItem
-                      name="german name"
+                      name="germanname"
                       type="text"
-                      value={bbq.germanName}
+                      value={germanName}
+                      placeholder="German Name"
                       onChange={(event) =>
                         setGermanName(event.currentTarget.value)
                       }
@@ -206,7 +213,8 @@ export default function BbqAdmin(props: Props) {
                     <StyledInputItem
                       name="allergens"
                       type="text"
-                      value={bbq.allergens}
+                      value={allergens}
+                      placeholder="Allergens"
                       onChange={(event) =>
                         setAllergens(event.currentTarget.value)
                       }
@@ -221,7 +229,8 @@ export default function BbqAdmin(props: Props) {
                     <StyledInputItem
                       name="description"
                       type="text"
-                      value={bbq.description}
+                      value={description}
+                      placeholder="Description"
                       onChange={(event) =>
                         setDescription(event.currentTarget.value)
                       }
@@ -231,7 +240,8 @@ export default function BbqAdmin(props: Props) {
                     <StyledInputItem
                       name="allergens"
                       type="text"
-                      value={bbq.germanDescription}
+                      value={germanDescription}
+                      placeholder="German Description"
                       onChange={(event) =>
                         setGermanDescription(event.currentTarget.value)
                       }
@@ -241,9 +251,9 @@ export default function BbqAdmin(props: Props) {
                         const answer = window.confirm(`Really delete item?`);
 
                         if (answer === true) {
-                          const id = props.bbq.id;
+                          const id = bbq.id;
 
-                          const response = await fetch(`/api/menu/${id}`, {
+                          const response = await fetch(`/api/menu/${bbq.id}`, {
                             method: 'DELETE',
                             headers: {
                               'Content-Type': 'application/json',
@@ -292,84 +302,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // if (bbq) props.bbq = bbq;
 
   return {
-    props: { bbq, user: user, loggedIn: loggedIn },
+    props: { bbq: bbq, user: user, loggedIn: loggedIn },
   };
 }
-
-//login?returnTo=/admin/bbqadmin
-
-// {editingKey === 'name' ? (
-//   <input
-//     value={name}
-//     onChange={(event) => setName(event.currentTarget.value)}
-//   />
-// ) : (
-//   name
-// )}{' '}
-// {editingKey !== 'name' ? (
-//   <button
-//     onClick={() => {
-//       setEditingKey('name');
-//     }}
-//   >
-//     edit
-//   </button>
-// ) : (
-//   <>
-//     <button
-//       onClick={async () => {
-//         await fetch(`/api/menu/${props.bbq.id}`, {
-//           method: 'PATCH',
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//           body: JSON.stringify({
-//             bbq: {
-//               name: name,
-//               germanName: germanName,
-//               description: description,
-//               germanDescription: germanDescription,
-//               allergens: allergens,
-//               price: price,
-//             },
-//           }),
-//         });
-//         setEditingKey(null);
-//       }}
-//     >
-//       save
-//     </button>
-//     <button
-//       onClick={() => {
-//         setEditingKey(null);
-//         setName(props.bbq.name);
-//       }}
-//     >
-//       cancel
-//     </button>
-//   </>
-// )}
-// <br />
-// <br />
-// <button
-//   onClick={async () => {
-//     const answer = window.confirm(`Really delete item ${props.bbq}?`);
-
-//     if (answer === true) {
-//       await fetch(`/api/menu/bbq/${props.bbq.id}`, {
-//         method: 'DELETE',
-//       });
-
-//       router.push('/admin/bbqadmin');
-//     }
-//   }}
-//   style={{
-//     background: 'red',
-//     color: 'white',
-//     padding: '7px 6px',
-//     borderRadius: 4,
-//     border: 0,
-//   }}
-// >
-//   delete bbq
-// </button>

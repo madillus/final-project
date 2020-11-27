@@ -1,16 +1,17 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import {  getBbqById } from '../../../util/dbmenu';
+import {  getBbqById, getSeasonalById } from '../../../util/dbmenu';
 
 //
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse,
 ) {
-  const {bbqId} = request.body;
+  const {bbqId, seasonalId} = request.body;
 
   try{
-    await getBbqById(bbqId) ;
+    await getBbqById(bbqId),
+    await getSeasonalById(seasonalId) ;
   } catch(err) {
     return response.status(500).send({ success: false});
   }

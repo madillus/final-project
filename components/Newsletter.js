@@ -13,6 +13,11 @@ margin-right: auto;
 padding: .5rem;
 border: .5rem;
 border-radius: 1rem;
+@media (max-width: 768px) {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
 `
 const Heading = styled.h2`
 font-size: 3rem;
@@ -20,10 +25,9 @@ text-align: center;
 `
 const Inner = styled.div`
 display: flex;
-width: 50%;
-justify-content: center;
 margin-top: .5rem;
 flex-direction: column;
+
 `
 
 const Text = styled.p`
@@ -33,6 +37,7 @@ text-align: center;
 `
 
 const InputBox = styled.input`
+align-items:center;
 border: 1px solid #000;
 text-decoration: none;
 border-radius: 10px;
@@ -44,6 +49,7 @@ margin-bottom: .5rem;
 &:focus {
     outline: none;
     box-shadow: 0px 0px 2px black;}
+
 `
 
 const StyledButton = styled.button`
