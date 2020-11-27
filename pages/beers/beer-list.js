@@ -68,7 +68,7 @@ opacity: 100%;
 @media (max-width: 768px) {
   font-size: 1.25rem;
   letter-spacing: .05rem;
-  display: none;
+
 }
 `;
 
@@ -102,7 +102,7 @@ opacity: 100%;
 @media (max-width: 768px) {
   font-size: .75rem;
   letter-spacing: .05rem;
-  display: none;
+
 }
 `;
 const Heading = styled.h1`
@@ -141,8 +141,16 @@ return (
       </ul>
 
       </FirstSectionText>
-  <FirstSectionImage src={landingImage} alt='logo' id='landingImage' />
-      <FirstSectionMobileImage src={singleBeer} alt='logo' id='singleBeer' />
+      <Image src='/body-bg.jpg'
+    alt='logo'
+    id='landingImage'
+    height={6200}
+    width={2500}
+    // layout='fill'
+     />
+
+  {/* <FirstSectionImage src={landingImage} alt='logo' id='landingImage' />
+      <FirstSectionMobileImage src={singleBeer} alt='logo' id='singleBeer' /> */}
 
 
   </FirstSection>

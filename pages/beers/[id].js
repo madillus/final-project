@@ -86,7 +86,7 @@ const BeerGrid =styled.div`
 `
 
 
-export default function Beer(props) {
+export default function Beer() {
   // const beer = beer.find((currentBeer) => {
   //   if (currentBeer.id === props.id) {
   //     return true;
@@ -100,12 +100,12 @@ return (
       <FirstSectionText>
         <BeerGrid>
             <div>
-            {props.beer.name}
+            {beer.name}
             </div>
 
-              <BeerImage src={props.beer.slug}/>
+              <BeerImage src={beer.slug}/>
               <div>
-            {props.beer.description}
+            {beer.description}
             </div>
               <div></div>
 

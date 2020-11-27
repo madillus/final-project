@@ -115,7 +115,7 @@ const StyledGrid = styled.div`
   grid-template-columns: repeat(3, auto);
   grid-template-rows: (auto);
   grid-auto-flow: row;
-  grid-gap: 4;`
+  `
 
 
 export default function Menu (props) {

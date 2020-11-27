@@ -42,7 +42,7 @@ z-index: 8;
 `;
 const CardMap = styled.div`
 color: whitesmoke;
-text-align: center;
+text-align: left;
 padding: 1.7rem;
 margin-top: 1rem;
 opacity: 100%;
@@ -75,6 +75,33 @@ const Heading = styled.h1`
 text-align: center;
 color: #c00c1a;
 `
+const ContactGrid = styled.div`
+   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 0px 0px;
+  ;
+`
+const GridCard = styled.div`
+color: whitesmoke;
+text-align: left;
+padding: 1rem;
+
+margin-right: 5rem;
+margin-left:5rem;
+opacity: 100%;
+font-size: 1.3rem;
+letter-spacing: .05rem;
+line-height: 1.5rem;
+@media (max-width: 768px) {
+  font-size: .75rem;
+width: 90%;
+margin-left: 5%;
+margin-right: 5%;
+  margin-top: 0;
+
+}`
+
 
 
 function Contact () {
@@ -83,29 +110,31 @@ return (
     <FirstSection>
 
       <FirstSectionText><Heading>Contact Us</Heading>
-        <CardText>
-          <br></br>
+        <ContactGrid>
 
-          Please be aware of our “Covid regulation” opening times.
-          Opening hours: Mo–So: 11 am – 10 am
-          Daily non stop kitchen:
-          first order 10:00 am, last order  9:40 am
-          We are only ever closed on 24th December
-          For Take Away orders just give us a call!
+        <GridCard>
+          Please be aware of our “Covid regulation” opening times.<br></br>
+          Opening hours: Mo–So: 11 am – 10 pm<br></br>
+          Daily non stop kitchen:<br></br>
+          first order 10:00 am, last order  9:40 pm<br></br>
+          We are only ever closed on 24th December</GridCard>
+          <GridCard>For Take Away orders just give us a call!
           01 9611516
-          or WhatsApp  06643455488
-          No Reservations for Drinks and Snacks!      No Reservations for Television or Sports!       No Reservations on the Terrace!
-          Reservations are only ever made in the Restaurant when Full Dinner is included for Every Person.
-          Large Groups can not be cashed individually. 1 Table = 1 Invoice<br></br>
-          1516 The Brewing Company
-          Schwarzenbergstraße 2, 1010 Vienna
-          Tel. + 43 1 961 1516
-          Fax + 43 1 512 7118
-          </CardText>
+          or WhatsApp  06643455488</GridCard>
+          <GridCard>No Reservations for Drinks and Snacks! <br></br>     No Reservations for Television or Sports!   <br></br>    No Reservations on the Terrace!<br></br>
+          Reservations are only ever made in the Restaurant when Full Dinner is included for Every Person.<br></br>
+          Large Groups can not be cashed individually. 1 Table = 1 Invoice</GridCard>
+
+          </ContactGrid>
           <CardMap classname='google-map-code'>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1329.6178038405844!2d16.3746737!3d48.2020776!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079d7448871d%3A0x3247408377e4c1d2!2sGarage%20Palais%20Corso!5e0!3m2!1sen!2sat!4v1606213875199!5m2!1sen!2sat" width="480" height="360" frameborder="1" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></CardMap>
-        <CardText> BIP GARAGEN | BREITENEDER IMMOBILIEN PARKING
-Um nur EUR 6,- für 6 Stunden Parken in unmittelbarer Nähe zu 1516 Brewing Company (18.00 – 24.00 Uhr)!</CardText>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.1962608828876!2d16.371274201336185!3d48.202835529126844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1980cfd30852a9e!2s1516%20Brewing%20Company!5e0!3m2!1sen!2sat!4v1606481056341!5m2!1sen!2sat"width="480" height="360" frameBorder="1" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe><GridCard>1516 The Brewing Company<br></br>
+          Schwarzenbergstraße 2, 1010 Vienna<br></br>
+          Tel. + 43 1 961 1516<br></br>
+          Fax + 43 1 512 7118</GridCard></CardMap>
+        <GridCard> BIP GARAGEN | BREITENEDER IMMOBILIEN PARKING
+Um nur EUR 6,- für 6 Stunden Parken in unmittelbarer Nähe zu 1516 Brewing Company (18.00 – 24.00 Uhr)!</GridCard>
+
+
 
 
 
@@ -114,9 +143,10 @@ Um nur EUR 6,- für 6 Stunden Parken in unmittelbarer Nähe zu 1516 Brewing Comp
     <Image src='/body-bg.jpg'
     alt='logo'
     id='landingImage'
-    width={1920}
-    height={2800}
-    style={{objectFit:'fill'}}   />
+    height={2200}
+    width={2500}
+    // layout='fill'
+     />
     </FirstSection>
   </Layout>
   )

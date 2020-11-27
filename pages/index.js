@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image'
 import Layout from '../components/Layout';
-import landingImage from '../images/landingImage.jpg';
 import singleBeer from '../images/singleBeer.png';
-import darkBeer from '../images/darkBeer.jpg';
-import singleGlass from '../images/singleGlass.png';
 import tableRibs from '../images/tableRibs.png';
 import Newsletter from '../components/Newsletter';
 import Link from 'next/link';
@@ -205,7 +202,7 @@ justify-content: center;
 @media (max-width: 768px) {
   width: 84%;
   margin-left: 8%;
-  margin-top: 12rem;
+  margin-top: 2rem;
   margin-right: 8%;
   align-items: center;
 

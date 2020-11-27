@@ -51,7 +51,7 @@ export default function Footer() {
           <Link href= "https://www.instagram.com/1516brewingcompany/" >
           <InstagramIcon style={{ cursor: 'pointer' }} />
           </Link>
-          <Link href= "hq@1516brewingcompany.com">
+          <Link href= "mailto:hq@1516brewingcompany.com">
           <EmailIcon style={{ cursor: 'pointer' }} />
           </Link>
         </IconBox>
