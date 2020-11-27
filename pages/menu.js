@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Tabs, Tab, Content } from "../components/Tabs";
 import styled from 'styled-components';
 import Layout from '../components/Layout';
-import Link from 'next/link'
+import Link from 'next/link';
 import Image from 'next/image';
-import Head from 'next/head'
+import Head from 'next/head';
 
 const FirstSection = styled.div`
 height: auto;
