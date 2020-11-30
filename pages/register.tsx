@@ -82,6 +82,8 @@ const StyledInput = styled.input`
   box-sizing: border-box;
 `;
 
+type Props = { token: string };
+
 export default function Register(props: { token: string }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

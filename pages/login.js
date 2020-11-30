@@ -166,7 +166,7 @@ export async function getServerSideProps(context) {
   if (await isSessionTokenValid(token)) {
     return {
       redirect: {
-        destination: '/admin/bbqadmin',
+        destination: redirectDestination,
         permanent: false,
       },
     };

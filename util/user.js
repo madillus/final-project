@@ -2,8 +2,16 @@ import postgres from 'postgres';
 import dotenv from 'dotenv';
 import camelcaseKeys from 'camelcase-keys';
 
+
+extractHerokuDatabaseEnvVars();
 dotenv.config();
-const sql = postgres();
+
+const sql =
+  process.env.NODE_ENV === 'production'
+    ? postgres({ ssl: { rejectUnauthorized: false } })
+    : postgres({
+        idle_timeout: 5,
+      });
 
 export async function registerUser(username, passwordHash) {
   const users = await sql`
