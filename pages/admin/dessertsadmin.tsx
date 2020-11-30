@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { getUserBySessionToken } from '../../util/user';
+import { getUserBySessionToken } from '../../util/dbmenu';
 import { Desserts } from '../../util/types';
 import nextCookies from 'next-cookies';
 import Layout from '../../components/Layout';
@@ -253,15 +253,18 @@ export default function dessertsAdmin(props: Props) {
                         if (answer === true) {
                           const id = desserts.id;
 
-                          const response = await fetch(`/api/menu/desserts/${id}`, {
-                            method: 'DELETE',
-                            headers: {
-                              'Content-Type': 'application/json',
+                          const response = await fetch(
+                            `/api/menu/desserts/${id}`,
+                            {
+                              method: 'DELETE',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                dessertsId: desserts.id,
+                              }),
                             },
-                            body: JSON.stringify({
-                              dessertsId: desserts.id,
-                            }),
-                          });
+                          );
                           const { success } = await response.json();
                           if (success) router.push('/admin/dessertsadmin');
                         } else {

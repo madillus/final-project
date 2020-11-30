@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { getUserBySessionToken } from '../../util/user';
+import { getUserBySessionToken } from '../../util/dbmenu';
 import { Bbq } from '../../util/types';
 import nextCookies from 'next-cookies';
 import Layout from '../../components/Layout';

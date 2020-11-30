@@ -2,7 +2,7 @@ import nextCookies from 'next-cookies';
 import React from 'react';
 import Head from 'next/head';
 import { isSessionTokenValid } from '../util/auth';
-import { getUserBySessionToken } from '../util/user';
+import { getUserBySessionToken } from '../util/dbmenu';
 
 export default function Profile(props) {
   return (

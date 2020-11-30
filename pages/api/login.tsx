@@ -4,7 +4,7 @@ import {
   deleteExpiredSessions,
   getUserByUsername,
   insertSession,
-} from '../../util/user';
+} from '../../util/dbmenu';
 import cookie from 'cookie';
 import argon2 from 'argon2';
 

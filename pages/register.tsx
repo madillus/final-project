@@ -159,5 +159,5 @@ export async function getServerSideProps() {
   }
 
   const token = tokens.create(secret);
-  return { props: { token: token } };
+  return { props: { token } };
 }
