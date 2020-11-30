@@ -57,7 +57,6 @@ const StyledLogin = styled.div`
   }
 
   h2 {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     color: ghostwhite;
   }
@@ -158,5 +157,5 @@ export async function getServerSideProps() {
   }
 
   const token = tokens.create(secret);
-  return { props: { token } };
+  return { props: { token: token } };
 }
