@@ -1,30 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Dynamic Restaurant Website using NextJS
 
-First, run the development server:
+Restaurants are not static businesses. They are very much dynamic and are constantly evolving,
+growing and reinventing themselves to provide a consistent service to their patrons.
+Menus being one of the most essential tools in any gastronomy related business need to be as dynamic as the business itself.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The goal of this is to allow for a much higher and simpler level of interaction between the proprietor and the website.
+In turn allowing for a more seamless experience for the existing customers and a more inviting one for potential new ones.
+When people visit a restaurant or bar, their first port of call is generally to search for it using their mobile phone,
+so this will be heavily optimized for a clean and quick mobile experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<a href="https://imgur.com/OVemsH5"><img src="https://i.imgur.com/OVemsH5.png" title="source: imgur.com" /></a>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
