@@ -916,9 +916,9 @@ export async function insertDesserts(desserts) {
 export async function registerUser(username, passwordHash) {
   const users = await sql`
     INSERT INTO users
-      (user_name, password_hash, user_role_id)
+      (user_name, password_hash)
     VALUES
-      (${username}, ${passwordHash}, 2)
+      (${username}, ${passwordHash})
     RETURNING *;
   `;
 
@@ -974,3 +974,11 @@ export async function getUserBySessionToken(token) {
   `;
   return users.map((u) => camelcaseKeys(u))[0];
 }
+
+// export async function getSessionByToken(token) {
+//   const sessions = await sql`
+//     SELECT * FROM sessions WHERE token = ${token};
+//   `;
+
+//   return sessions.map((s) => camelcaseKeys(s))[0];
+// }
